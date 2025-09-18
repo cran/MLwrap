@@ -9,7 +9,7 @@ table_pfi_results(analysis_object, show_table = FALSE)
 \arguments{
 \item{analysis_object}{Fitted analysis_object with 'sensitivity_analysis(methods = "PFI")'.}
 
-\item{show_table}{Boolean. Whether to show the table.}
+\item{show_table}{Boolean. Whether to print the table.}
 }
 \value{
 Tibble or list of tibbles (multiclass classification) with PFI results.
@@ -24,7 +24,7 @@ each feature's values.
 # complete till sensitivity_analysis() function of the
 # MLwrap pipeline using PFI method.
 
-\donttest{
+\dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,

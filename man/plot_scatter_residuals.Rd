@@ -21,13 +21,13 @@ for validating regression model assumptions and detecting potential issues with 
 # Note: For obtaining the residuals vs. predicted values plot the user needs to
 # complete till fine_tuning( ) function of the MLwrap pipeline.
 
-\donttest{
+\dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,
                              task = "regression")
 wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 
 # And then, you can obtain the residuals vs predicted values plot.
 

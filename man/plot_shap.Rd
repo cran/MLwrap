@@ -25,13 +25,13 @@ predictions.
 # Note: For obtaining the SHAP plots the user needs to complete till sensitivity_analysis( )
 # function of the MLwrap pipeline using the SHAP method.
 
-\donttest{
+\dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,
                              task = "regression")
 wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
 
 # And then, you can obtain the SHAP plots.

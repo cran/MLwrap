@@ -12,14 +12,14 @@
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
-#' @param show_table Boolean. Whether to show the table.
+#' @param show_table Boolean. Whether to print the table.
 #'
 #' @returns Tibble with best hyperparameter configuration.
 #' @examples
 #' # Note: For obtaining hyoperparameters table the user needs to
 #' # complete till fine_tuning( ) function.
 #'
-#'   \donttest{
+#'   \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
@@ -63,7 +63,7 @@ table_best_hyperparameters <- function(analysis_object, show_table = FALSE){
 
     cli::cat_line()
 
-    methods::show(best_hyp)
+    print(best_hyp)
 
   }
 
@@ -85,14 +85,14 @@ table_best_hyperparameters <- function(analysis_object, show_table = FALSE){
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
-#' @param show_table Boolean. Whether to show the table.
+#' @param show_table Boolean. Whether to print the table.
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with evaluation results.
 #' @examples
 #' # Note: For obtaining the evaluation table the user needs to
 #' # complete till fine_tuning( ) function.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
@@ -145,17 +145,17 @@ table_evaluation_results <- function(analysis_object, show_table = FALSE){
 
       cli::cli_h2("Train Data Evaluation Results")
 
-      methods::show(tables$summary_train)
+      print(tables$summary_train)
 
       cli::cat_line()
 
       cli::cli_h2("Test Data Evaluation Results")
 
-      methods::show(tables$summary_test)
+      print(tables$summary_test)
 
     } else {
 
-      methods::show(result)
+      print(result)
 
 
     }
@@ -178,7 +178,7 @@ table_evaluation_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "PFI")'.
 #'
-#' @param show_table Boolean. Whether to show the table.
+#' @param show_table Boolean. Whether to print the table.
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with PFI results.
 #' @examples
@@ -186,7 +186,7 @@ table_evaluation_results <- function(analysis_object, show_table = FALSE){
 #' # complete till sensitivity_analysis() function of the
 #' # MLwrap pipeline using PFI method.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
@@ -230,7 +230,7 @@ table_pfi_results <- function(analysis_object, show_table = FALSE){
 
         cli::cli_h2(sub(".*_", "", pfi_names[[i]]))
 
-        methods::show(pfi_tables[[i]])
+        print(pfi_tables[[i]])
 
         cli::cat_line()
 
@@ -238,7 +238,7 @@ table_pfi_results <- function(analysis_object, show_table = FALSE){
 
     } else{
 
-      methods::show(pfi_tables)
+      print(pfi_tables)
 
     }
 
@@ -265,7 +265,7 @@ table_pfi_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "SHAP")'.
 #'
-#' @param show_table Boolean. Whether to show the table.
+#' @param show_table Boolean. Whether to print the table.
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with SHAP summarized results.
 #' @examples
@@ -273,7 +273,7 @@ table_pfi_results <- function(analysis_object, show_table = FALSE){
 #' # to complete till sensitivity_analysis() function of the
 #' # MLwrap pipeline using the SHAP method.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
@@ -317,7 +317,7 @@ table_shap_results <- function(analysis_object, show_table = FALSE){
 
         cli::cli_h2(sub(".*_", "", shap_names[[i]]))
 
-        methods::show(shap_tables[[i]])
+        print(shap_tables[[i]])
 
         cli::cat_line()
 
@@ -325,7 +325,7 @@ table_shap_results <- function(analysis_object, show_table = FALSE){
 
     } else{
 
-      methods::show(shap_tables)
+      print(shap_tables)
 
     }
 
@@ -350,7 +350,7 @@ table_shap_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Integrated Gradients")'.
 #'
-#' @param show_table Boolean. Whether to show the table.
+#' @param show_table Boolean. Whether to print the table.
 #'
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with Integrated Gradient summarized results.
@@ -361,7 +361,7 @@ table_shap_results <- function(analysis_object, show_table = FALSE){
 #'
 #' if (requireNamespace("torch", quietly = TRUE)) {
 #'
-#'   \donttest{
+#'   \dontrun{
 #'
 #'   wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
@@ -407,7 +407,7 @@ table_integrated_gradients_results <- function(analysis_object, show_table = FAL
 
         cli::cli_h2(sub(".*_", "", ig_names[[i]]))
 
-        methods::show(ig_tables[[i]])
+        print(ig_tables[[i]])
 
         cli::cat_line()
 
@@ -415,7 +415,7 @@ table_integrated_gradients_results <- function(analysis_object, show_table = FAL
 
     } else{
 
-      methods::show(ig_tables)
+      print(ig_tables)
 
     }
 
@@ -436,7 +436,7 @@ table_integrated_gradients_results <- function(analysis_object, show_table = FAL
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Olden")'.
 #'
-#' @param show_table Boolean. Whether to show the table.
+#' @param show_table Boolean. Whether to print the table.
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with Olden results.
 #' @examples
@@ -446,7 +446,7 @@ table_integrated_gradients_results <- function(analysis_object, show_table = FAL
 #'
 #' if (requireNamespace("torch", quietly = TRUE)) {
 #'
-#'   \donttest{
+#'   \dontrun{
 #'
 #'   wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
@@ -480,7 +480,7 @@ table_olden_results <- function(analysis_object, show_table = FALSE){
 
     cli::cli_h1("Olden Importance Results")
 
-    methods::show(olden)
+    print(olden)
 
     cli::cat_line()
 
@@ -501,7 +501,7 @@ table_olden_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Sobol_Jansen")'.
 #'
-#' @param show_table Boolean. Whether to show the table.
+#' @param show_table Boolean. Whether to print the table.
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with Sobol-Jansen results.
 #' @examples
@@ -510,7 +510,7 @@ table_olden_results <- function(analysis_object, show_table = FALSE){
 #' # MLwrap pipeline using the Sobol_Jansen method.
 #' # Sobol_Jansen method only works when all input features are continuous.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
@@ -542,7 +542,7 @@ table_sobol_jansen_results <- function(analysis_object, show_table = FALSE){
 
     cli::cli_h1("Sobol_Jansen Importance Results")
 
-    methods::show(sobol)
+    print(sobol)
 
     cli::cat_line()
 

@@ -72,7 +72,7 @@ sobol_plot <- function(sobol_result) {
     ggplot2::geom_text(ggplot2::aes(label = label),
                        position = ggplot2::position_dodge(width = 0.7),
                        hjust = -0.3,
-                       size = 3.5) +
+                       linewidth = 3.5) +
     ggplot2::labs(title = "Sobol Indices (First Order vs Total)",
                   x = "Sobol index", y = "Variable") +
     ggplot2::scale_fill_manual(values = c("S1" = "steelblue", "ST" = "darkorange"),

@@ -21,13 +21,13 @@ percentile, helping assess how well the model identifies high-value cases in ran
 # Note: For obtaining the gain curve plot the user needs to complete till fine_tuning( ) function
 # of the MLwrap pipeline and only with categorical outcome.
 
-\donttest{
+\dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well_bin ~ depression + emot_intel + resilience,
                              task = "classification")
 wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 
 # And then, you can obtain the gain curve plot.
 

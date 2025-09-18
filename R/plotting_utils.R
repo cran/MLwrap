@@ -17,13 +17,13 @@
 #' # Note: For obtaining the plot with tuning results the user needs to complete till
 #' # fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the tuning results plot.
 #'
@@ -81,13 +81,13 @@ plot_tuning_results <- function(analysis_object){
 #'
 #' if (requireNamespace("torch", quietly = TRUE)) {
 #'
-#'   \donttest{
+#'   \dontrun{
 #'
 #'   wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #'   # And then, you can obtain the loss curve plot.
 #'
@@ -138,13 +138,13 @@ plot_loss_curve <- function(analysis_object){
 #'
 #' if (requireNamespace("torch", quietly = TRUE)) {
 #'
-#'   \donttest{
+#'   \dontrun{
 #'
 #'   wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #'   # And then, you can obtain the Neural Network architecture graph plot.
 #'
@@ -202,13 +202,13 @@ plot_graph_nn <- function(analysis_object){
 #' # Note: For obtaining the residuals distribution plot the user needs to
 #' # complete till fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the residuals distribution plot.
 #'
@@ -248,13 +248,13 @@ plot_residuals_distribution <- function(analysis_object){
 #' # Note: For obtaining the residuals vs. predicted values plot the user needs to
 #' # complete till fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the residuals vs predicted values plot.
 #'
@@ -294,13 +294,13 @@ plot_scatter_residuals <- function(analysis_object){
 #' # Note: For obtaining the observed vs. predicted values plot the user needs to
 #' # complete till fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the observed vs predicted values plot.
 #'
@@ -344,13 +344,13 @@ plot_scatter_predictions <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline and
 #' # only with categorical outcome.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
 #'                              task = "classification")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the confusion matrix plot.
 #'
@@ -391,13 +391,13 @@ plot_confusion_matrix <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline and
 #' # only with categorical outcome.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
 #'                              task = "classification")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the roc curve plot.
 #'
@@ -462,13 +462,13 @@ plot_pr_curve <- function(analysis_object){
 #' # Note: For obtaining the gain curve plot the user needs to complete till fine_tuning( ) function
 #' # of the MLwrap pipeline and only with categorical outcome.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
 #'                              task = "classification")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the gain curve plot.
 #'
@@ -506,13 +506,13 @@ plot_gain_curve <- function(analysis_object){
 #' # Note: For obtaining the lift curve plot the user needs to complete till fine_tuning( ) function
 #' # of the MLwrap pipeline and only with categorical outcome.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
 #'                              task = "classification")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the lift curve plot.
 #'
@@ -552,13 +552,13 @@ plot_lift_curve <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline
 #' # and only with categorical outcome.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
 #'                              task = "classification")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the distribution by class plot.
 #'
@@ -600,13 +600,13 @@ plot_distribution_by_class <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline and
 #' # only with binary outcome.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
 #'                              task = "classification")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the calibration curve plot.
 #'
@@ -627,9 +627,9 @@ plot_calibration_curve <- function(analysis_object){
 
   }
 
-  p_train <- plots$reliability_plot_train
+  p_train <- plots$reliability_plot_train + ggplot2::ggtitle("Train data")
 
-  p_test <- plots$reliability_plot_test
+  p_test  <- plots$reliability_plot_test  + ggplot2::ggtitle("Test data")
 
   plot(patchwork::wrap_plots(p_train, p_test, nrow = 2))
 
@@ -655,13 +655,13 @@ plot_calibration_curve <- function(analysis_object){
 #' # Note: For obtaining the PFI plot results the user needs to complete till
 #' # sensitivity_analysis( ) function of the MLwrap pipeline using the PFI method.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #' wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
 #'
 #' # And then, you can obtain the PFI plot.
@@ -722,13 +722,13 @@ plot_pfi <- function(analysis_object, show_table = FALSE){
 #' # Note: For obtaining the SHAP plots the user needs to complete till sensitivity_analysis( )
 #' # function of the MLwrap pipeline using the SHAP method.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #' wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
 #'
 #' # And then, you can obtain the SHAP plots.
@@ -811,13 +811,13 @@ plot_shap <- function(analysis_object, show_table = FALSE){
 #'
 #' if (requireNamespace("torch", quietly = TRUE)) {
 #'
-#'   \donttest{
+#'   \dontrun{
 #'
 #'   wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'   wrap_object <- sensitivity_analysis(wrap_object, methods = "Integrated Gradients")
 #'
 #'   # And then, you can obtain the Integrated Gradients plot.
@@ -900,13 +900,13 @@ plot_integrated_gradients <- function(analysis_object, show_table = FALSE){
 #'
 #' if (requireNamespace("torch", quietly = TRUE)) {
 #'
-#'   \donttest{
+#'   \dontrun{
 #'
 #'   wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'   wrap_object <- sensitivity_analysis(wrap_object, methods = "Olden")
 #'
 #'   # And then, you can obtain the Olden plot.
@@ -967,13 +967,13 @@ plot_olden <- function(analysis_object, show_table = FALSE){
 #' # Note: For obtaining the Sobol_Jansen plot the user needs to complete till sensitivity_analysis( )
 #' # function of the MLwrap pipeline using the Sobol_Jansen method.
 #'
-#' \donttest{
+#' \dontrun{
 #'
 #' wrap_object <- preprocessing(df = sim_data,
 #'                              formula = psych_well ~ depression + emot_intel + resilience,
 #'                              task = "regression")
 #' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #' wrap_object <- sensitivity_analysis(wrap_object, methods = "Sobol_Jansen")
 #'
 #' # And then, you can obtain the Sobol_Jansen plot.

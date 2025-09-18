@@ -3,8 +3,8 @@
 
 # MLwrap
 
-A minimalistic library specifically designed to make the estimation of
-MachineLearning (ML) techniques as easy and accessible as possible,
+A minimal library specifically designed to make the estimation of
+Machine Learning (ML) techniques as easy and accessible as possible,
 particularly within the framework of the Knowledge Discovery in
 Databases (KDD) process in data mining. The package provides all the
 essential tools needed to efficiently structure and execute each stage
@@ -107,12 +107,12 @@ show(table_pfi)
 #> # A tibble: 8 × 3
 #>   Feature               Importance   StDev
 #>   <chr>                      <dbl>   <dbl>
-#> 1 depression               0.760   0.0344 
-#> 2 emot_intel               0.239   0.0248 
-#> 3 age                      0.0593  0.00665
-#> 4 socioec_status_Low       0.0169  0.00247
-#> 5 gender_Female            0.0125  0.00224
-#> 6 socioec_status_Medium    0.0118  0.00244
-#> 7 gender_Male              0.0114  0.00244
-#> 8 socioec_status_High      0.00967 0.00269
+#> 1 depression               0.796   0.0265 
+#> 2 emot_intel               0.193   0.0276 
+#> 3 age                      0.0681  0.00720
+#> 4 socioec_status_Medium    0.00690 0.00257
+#> 5 socioec_status_High      0.00682 0.00165
+#> 6 socioec_status_Low       0.00665 0.00123
+#> 7 gender_Male              0.00531 0.00129
+#> 8 gender_Female            0.00516 0.00167
 ```

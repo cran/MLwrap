@@ -82,7 +82,7 @@ the training data and updates the AnalysisObject, ensuring a reproducible and ef
 \item f_meas
 \item mcc
 \item j_index
-\item detection_prevelance
+\item detection_prevalence
 \item roc_auc
 \item pr_auc
 \item gain_capture
@@ -101,7 +101,7 @@ data(sim_data) # sim_data is a simulated dataset wtih psychological variables
 
 wrap_object <- preprocessing(
            df = sim_data,
-           formula = psych_well ~ depression + emot_intel + resilience + life_sat,
+           formula = psych_well ~ depression + resilience + life_sat,
            task = "regression"
            )
 
@@ -110,7 +110,7 @@ wrap_object <- build_model(
                model_name = "Random Forest",
                hyperparameters = list(
                      mtry = 3,
-                     trees = 50
+                     trees = 10
                      )
                  )
 

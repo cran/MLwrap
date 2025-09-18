@@ -9,7 +9,7 @@ table_best_hyperparameters(analysis_object, show_table = FALSE)
 \arguments{
 \item{analysis_object}{Fitted analysis_object with 'fine_tuning()'.}
 
-\item{show_table}{Boolean. Whether to show the table.}
+\item{show_table}{Boolean. Whether to print the table.}
 }
 \value{
 Tibble with best hyperparameter configuration.
@@ -26,7 +26,7 @@ capabilities through the show_table parameter.
 # Note: For obtaining hyoperparameters table the user needs to
 # complete till fine_tuning( ) function.
 
-  \donttest{
+  \dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,

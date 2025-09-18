@@ -9,7 +9,7 @@ table_integrated_gradients_results(analysis_object, show_table = FALSE)
 \arguments{
 \item{analysis_object}{Fitted analysis_object with 'sensitivity_analysis(methods = "Integrated Gradients")'.}
 
-\item{show_table}{Boolean. Whether to show the table.}
+\item{show_table}{Boolean. Whether to print the table.}
 }
 \value{
 Tibble or list of tibbles (multiclass classification) with Integrated Gradient summarized results.
@@ -32,7 +32,7 @@ summarize the Integrated Gradients values calculated, three different metrics ar
 
 if (requireNamespace("torch", quietly = TRUE)) {
 
-  \donttest{
+  \dontrun{
 
   wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,

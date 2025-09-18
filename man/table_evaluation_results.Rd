@@ -9,7 +9,7 @@ table_evaluation_results(analysis_object, show_table = FALSE)
 \arguments{
 \item{analysis_object}{Fitted analysis_object with 'fine_tuning()'.}
 
-\item{show_table}{Boolean. Whether to show the table.}
+\item{show_table}{Boolean. Whether to print the table.}
 }
 \value{
 Tibble or list of tibbles (multiclass classification) with evaluation results.
@@ -24,7 +24,7 @@ and test data, enabling comparative performance evaluation and detection of pote
 # Note: For obtaining the evaluation table the user needs to
 # complete till fine_tuning( ) function.
 
-\donttest{
+\dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,

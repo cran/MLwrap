@@ -67,15 +67,15 @@ and beeswarm plots for detailed feature impact across observations. All results 
 under the \code{sensitivity_analysis} slot, finalizing the MLwrap pipeline with a deep understanding of model drivers.
 }
 \examples{
-# Example: Using PFI and SHAP
+# Example: Using PFI
 
 library(MLwrap)
 
 data(sim_data) # sim_data is a simulated dataset with psychological variables
 
 wrap_object <- preprocessing(
-       df = sim_data,
-       formula = psych_well ~ depression + emot_intel + resilience + life_sat,
+       df = sim_data[1:500 ,],
+       formula = psych_well ~ depression + emot_intel + life_sat,
        task = "regression"
        )
 
@@ -84,7 +84,7 @@ wrap_object <- build_model(
                model_name = "Random Forest",
                hyperparameters = list(
                                  mtry = 3,
-                                 trees = 20
+                                 trees = 5
                                  )
                            )
 
@@ -94,16 +94,16 @@ wrap_object <- fine_tuning(wrap_object,
                 )
 
 
-wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
+wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
 
 # Extracting Results
 
-table_shap <- table_shap_results(wrap_object)
+table_pfi <- table_pfi_results(wrap_object)
 
-# Plotting SHAP Results
+# Plotting PFI Results
 
 wrap_object \%>\%
-    plot_shap()
+    plot_pfi()
 
 }
 \references{

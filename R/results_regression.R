@@ -109,7 +109,7 @@ plot_residuals_density <- function(predictions, new_data = "test") {
     ggplot2::ggplot(ggplot2::aes(x = error)) +
     ggplot2::geom_histogram(ggplot2::aes(y = ggplot2::after_stat(density)),
                             bins = 30, fill = "lightgray", color = "white", alpha = 0.5) +
-    ggplot2::geom_density(color = "steelblue", size = 1.2, alpha = 0.6) +
+    ggplot2::geom_density(color = "steelblue", linewidth = 1.2, alpha = 0.6) +
     ggplot2::labs(title = paste0("Residual Density (", new_data, " set)"),
                   x = "Residuals", y = "Density") +
     ggplot2::theme_minimal()

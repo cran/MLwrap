@@ -174,7 +174,7 @@ plot_dist_probs_binary <- function(predictions, new_data = "test"){
   p <- predictions %>%
     dplyr::filter(data_set == new_data) %>%
     dplyr::group_by(y) %>%
-    ggplot2::ggplot(ggplot2::aes_string(x = predicted, fill = "y")) +
+    ggplot2::ggplot(ggplot2::aes(x = .data[[predicted]], fill = .data[["y"]])) +
     ggplot2::geom_density(alpha = 0.5) +
     ggplot2::labs(title = paste0("Probability Distribution by Class (",new_data, " data)") ,
                   x = "Predicted Probability",
@@ -190,7 +190,9 @@ plot_calibration_curve_binary <- function(predictions, new_data = "test"){
 
   positive_class = levels(predictions$y)[2]
 
-  predicted = sym(paste0(".pred_", positive_class))
+#' @importFrom rlang sym .data
+
+  predicted = rlang::sym(paste0(".pred_", positive_class))
 
   p <- predictions %>%
     dplyr::filter(data_set == new_data) %>%

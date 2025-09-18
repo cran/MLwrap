@@ -120,8 +120,8 @@ wrap_object <- build_model(
                analysis_object = wrap_object,
                model_name = "Random Forest",
                hyperparameters = list(
-                                 mtry = 3,
-                                 trees = 100
+                                 mtry = 2,
+                                 trees = 10
                                  )
                            )
 # It is safe to reuse the same object name (e.g., wrap_object, or whatever) step by step,

@@ -23,13 +23,13 @@ reliability of the model's probabilistic estimates.
 # complete till fine_tuning( ) function of the MLwrap pipeline and
 # only with binary outcome.
 
-\donttest{
+\dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well_bin ~ depression + emot_intel + resilience,
                              task = "classification")
 wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 
 # And then, you can obtain the calibration curve plot.
 

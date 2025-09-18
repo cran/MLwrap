@@ -23,13 +23,13 @@ for underfitting / overfitting diagnostics.
 
 if (requireNamespace("torch", quietly = TRUE)) {
 
-  \donttest{
+  \dontrun{
 
   wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,
                              task = "regression")
   wrap_object <- build_model(wrap_object, "Neural Network")
-  wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+  wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 
   # And then, you can obtain the loss curve plot.
 

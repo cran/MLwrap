@@ -9,7 +9,7 @@ table_sobol_jansen_results(analysis_object, show_table = FALSE)
 \arguments{
 \item{analysis_object}{Fitted analysis_object with 'sensitivity_analysis(methods = "Sobol_Jansen")'.}
 
-\item{show_table}{Boolean. Whether to show the table.}
+\item{show_table}{Boolean. Whether to print the table.}
 }
 \value{
 Tibble or list of tibbles (multiclass classification) with Sobol-Jansen results.
@@ -26,7 +26,7 @@ higher-order effects and complex interactions between variables.
 # MLwrap pipeline using the Sobol_Jansen method.
 # Sobol_Jansen method only works when all input features are continuous.
 
-\donttest{
+\dontrun{
 
 wrap_object <- preprocessing(df = sim_data,
                              formula = psych_well ~ depression + emot_intel + resilience,

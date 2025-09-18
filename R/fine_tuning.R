@@ -59,7 +59,7 @@
 #' * f_meas
 #' * mcc
 #' * j_index
-#' * detection_prevelance
+#' * detection_prevalence
 #' * roc_auc
 #' * pr_auc
 #' * gain_capture
@@ -80,7 +80,7 @@
 #'
 #' wrap_object <- preprocessing(
 #'            df = sim_data,
-#'            formula = psych_well ~ depression + emot_intel + resilience + life_sat,
+#'            formula = psych_well ~ depression + resilience + life_sat,
 #'            task = "regression"
 #'            )
 #'
@@ -89,7 +89,7 @@
 #'                model_name = "Random Forest",
 #'                hyperparameters = list(
 #'                      mtry = 3,
-#'                      trees = 50
+#'                      trees = 10
 #'                      )
 #'                  )
 #'
