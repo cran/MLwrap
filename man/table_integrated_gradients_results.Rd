@@ -15,10 +15,12 @@ table_integrated_gradients_results(analysis_object, show_table = FALSE)
 Tibble or list of tibbles (multiclass classification) with Integrated Gradient summarized results.
 }
 \description{
-The \strong{table_integrated_gradients_results()} function implements the same summarized metrics scheme for
-Integrated Gradients values, a methodology specifically designed for neural networks that calculates
-feature importance through gradient integration along paths from a baseline to the current input. To
-summarize the Integrated Gradients values calculated, three different metrics are computed:
+The \strong{table_integrated_gradients_results()} function implements the same
+summarized metrics scheme for Integrated Gradients values, a methodology
+specifically designed for neural networks that calculates feature importance
+through gradient integration along paths from a baseline to the current input.
+To summarize the Integrated Gradients values calculated, three different
+metrics are computed:
 \itemize{
 \item \strong{Mean Absolute Value}
 \item \strong{Standard Deviation of Mean Absolute Value}
@@ -30,23 +32,12 @@ summarize the Integrated Gradients values calculated, three different metrics ar
 # the user needs to complete till sensitivity_analysis() function of the
 # MLwrap pipeline using the Integrated Gradient method.
 
-if (requireNamespace("torch", quietly = TRUE)) {
-
-  \dontrun{
-
-  wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-  wrap_object <- build_model(wrap_object, "Neural Network")
-  wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-  wrap_object <- sensitivity_analysis(wrap_object, methods = "Integrated Gradients")
-
-  # And then, you can obtain the Integrated Gradients results table.
-
-  table_IG <- table_integrated_gradients_results(wrap_object)
-
-  }
+# See the full pipeline example under sensitivity_analysis
+# (Requires sensitivity_analysis(methods = "Integrated Gradients"))
+# Final call signature:
+# table_integrated_gradients_results(wrap_object)
 
 }
-
+\seealso{
+\code{\link{sensitivity_analysis}}
 }

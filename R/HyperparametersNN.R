@@ -22,7 +22,23 @@ HyperparamsNN <- R6::R6Class("Neural Network Hyperparameters",
 
                                    if (all(names(hyperparams) %in% valid_hparams)){
 
+                                      for (hyp_name in names(hyperparams)){
 
+                                        hyperparam <- hyperparams[[hyp_name]]
+
+                                          if (length(hyperparam) > 1){
+
+                                            if (hyperparam[1] >= hyperparam[2]){
+
+                                              print(names(hyperparams))
+
+                                              stop(paste0("For '", hyp_name, "' lower range (", hyperparam[1],
+                                                          ") is greater or equal to upper range (", hyperparam[2],")!"))
+
+                                            }
+
+                                          }
+                                       }
 
                                    }
 

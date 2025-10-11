@@ -49,7 +49,7 @@ test_that("Check split_data works properly", {
   split_data_bin <- split_data(model_object_bin)
   split_data_reg <- split_data(model_object_reg)
 
-  expect_equal(class(split_data_bin$sampling_method$splits[[1]]), c("val_split", "rsplit"))
+  expect_equal(class(split_data_bin$sampling_method$splits[[1]]), c("vfold_split", "rsplit"))
   expect_equal(split_data_bin$final_split, rbind(model_object_bin$train_data, model_object_bin$validation_data))
 
   expect_equal(class(split_data_reg$sampling_method$splits[[1]]), c("vfold_split", "rsplit") )

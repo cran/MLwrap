@@ -25,25 +25,29 @@ tuning process. It can be used for further model evaluation, prediction, or down
 the package workflow.
 }
 \description{
-The \strong{fine_tuning()} function performs automated hyperparameter optimization for ML workflows encapsulated
-within an AnalysisObject. It supports different tuning strategies, such as \strong{Bayesian Optimization} and
-\strong{Grid Search Cross-Validation}, allowing the user to specify evaluation metrics and whether to visualize
-tuning results. The function first validates arguments and updates the workflow and metric settings within
-the AnalysisObject. If hyperparameter tuning is enabled, it executes the selected tuning procedure,
-identifies the best hyperparameter configuration based on the specified metrics, and updates the workflow
-accordingly. For neural network models, it also manages the creation and integration of new model instances
-and provides additional visualization of training dynamics. Finally, the function fits the optimized model to
-the training data and updates the AnalysisObject, ensuring a reproducible and efficient model selection process
-(Bartz et al., 2023).
+The \strong{fine_tuning()} function performs automated hyperparameter optimization
+for ML workflows encapsulated within an AnalysisObject. It supports different
+tuning strategies, such as \strong{Bayesian Optimization} (with cross-validation)
+and \strong{Grid Search Cross-Validation}, allowing the user to specify evaluation
+metrics and whether to visualize tuning results. The function first validates
+arguments and updates the workflow and metric settings within the AnalysisObject.
+If hyperparameter tuning is enabled, it executes the selected tuning procedure,
+identifies the best hyperparameter configuration based on the specified
+metrics, and updates the workflow accordingly. For neural network models, it
+also manages the creation and integration of new model instances and provides
+additional visualization of training dynamics. Finally, the function fits the
+optimized model to the training data and updates the AnalysisObject, ensuring
+a reproducible and efficient model selection process (Bartz et al., 2023).
 }
 \section{Tuners}{
 
-\subsection{Bayesian Optimization}{
+\subsection{Bayesian Optimization (with cross-validation)}{
 \itemize{
+\item Number of Folds: 5
 \item Initial data points: 20
 \item Maximum number of iterations: 25
 \item Convergence after 5 iterations without improvement
-\item Train / Validation / Test : 0.6 / 0.2 / 0.2
+\item Train / Test : 0.75 / 0.25
 }
 }
 
@@ -93,44 +97,26 @@ the training data and updates the AnalysisObject, ensuring a reproducible and ef
 }
 
 \examples{
-# Example 1: Fine tuning function applied to a regression task
+# Fine tuning function applied to a regression task using Random Forest
 
-library(MLwrap)
-
-data(sim_data) # sim_data is a simulated dataset wtih psychological variables
-
+set.seed(123) # For reproducibility
 wrap_object <- preprocessing(
-           df = sim_data,
-           formula = psych_well ~ depression + resilience + life_sat,
+           df = sim_data[1:500 ,],
+           formula = psych_well ~ depression + life_sat,
            task = "regression"
            )
-
 wrap_object <- build_model(
                analysis_object = wrap_object,
                model_name = "Random Forest",
                hyperparameters = list(
-                     mtry = 3,
-                     trees = 10
+                     mtry = 2,
+                     trees = 3
                      )
                  )
-
 wrap_object <- fine_tuning(wrap_object,
                 tuner = "Grid Search CV",
                 metrics = c("rmse")
-               )
-
-# Extracting Evaluation Results
-
-table_best_hyp <- table_best_hyperparameters(wrap_object)
-table_results <- table_evaluation_results(wrap_object)
-
-# Plotting Results
-
-wrap_object |>
-  plot_tuning_results() |>
-  plot_residuals_distribution() |>
-  plot_scatter_residuals()
-
+                )
 }
 \references{
 Bartz, E., Bartz-Beielstein, T., Zaefferer, M., & Mersmann, O. (2023). \emph{Hyperparameter

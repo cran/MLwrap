@@ -9,32 +9,37 @@ build_model(analysis_object, model_name, hyperparameters = NULL)
 \arguments{
 \item{analysis_object}{analysis_object created from preprocessing function.}
 
-\item{model_name}{Name of the ML Model. A string of the model name: "Neural Network",
-"Random Forest", "SVM" or "XGBOOST".}
+\item{model_name}{Name of the ML Model. A string of the model name:
+"Neural Network", "Random Forest", "SVM" or "XGBOOST".}
 
-\item{hyperparameters}{Hyperparameters of the ML model. List containing the name of the hyperparameter
-and its value or range of values.}
+\item{hyperparameters}{Hyperparameters of the ML model. List containing
+the name of the hyperparameter and its value or range of values.}
 }
 \value{
-An updated analysis_object containing the fitted machine learning model, the model name,
-the specified hyperparameters, and the current processing stage. This enriched object retains all
-previously stored information from the preprocessing step and incorporates the results of the
-model-building process, ensuring a coherent and reproducible workflow for subsequent training,
-evaluation, or prediction tasks.
+An updated analysis_object containing the fitted machine learning
+model, the model name, the specified hyperparameters, and the current
+processing stage. This enriched object retains all previously stored
+information from the preprocessing step and incorporates the results of the
+model-building process, ensuring a coherent and reproducible workflow for
+subsequent training, evaluation, or prediction tasks.
 }
 \description{
-The function \strong{build_model()} is designed to construct and attach a ML model to an existing
-analysis object,which contains the preprocessed dataset generated in the previous step using the
-preprocessing() function. Based on the specified model type and optional hyperparameters, it
-supports several popular algorithms—including \strong{Neural Network}, \strong{Random Forest}, \strong{XGBOOST},
-and \strong{SVM} (James et al., 2021)— by initializing the corresponding hyperparameter class,
-updating the analysis object with these settings, and invoking the appropriate model creation
-function. For SVM models, it further distinguishes between kernel types (rbf, polynomial, linear)
-to ensure the correct implementation. The function also updates the analysis object with the model
-name, the fitted model, and the current processing stage before returning the enriched object,
-thereby streamlining the workflow for subsequent training, evaluation, or prediction steps.
-This modular approach facilitates flexible and reproducible ML pipelines by encapsulating both
-the model and its configuration within a single structured object.
+The function \strong{build_model()} is designed to construct and attach a ML model
+to an existing analysis object,which contains the preprocessed dataset
+generated in the previous step using the preprocessing() function. Based on
+the specified model type and optional hyperparameters, it supports several
+popular algorithms—including \strong{Neural Network}, \strong{Random Forest},
+\strong{XGBOOST}, and \strong{SVM} (James et al., 2021)— by initializing the
+corresponding hyperparameter class, updating the analysis object with these
+settings, and invoking the appropriate model creation function. For SVM
+models, it further distinguishes between kernel types (rbf, polynomial,
+linear) to ensure the correct implementation. The function also updates the
+analysis object with the model name, the fitted model, and the current
+processing stage before returning the enriched object, thereby streamlining
+the workflow for subsequent training, evaluation, or prediction steps. This
+modular approach facilitates flexible and reproducible ML pipelines by
+encapsulating both the model and its configuration within a single
+structured object.
 }
 \section{Hyperparameters}{
 
@@ -60,7 +65,7 @@ A single value, a vector with range values \code{c(min_val, max_val)}. Default r
 \item \strong{mtry}: Number of variables randomly selected as candidates at each split.
 A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(3, 8).
 \item \strong{min_n}: Minimum Number of samples to split at each node.
-A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(2, 25).
+A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(5, 25).
 }
 }
 
@@ -75,11 +80,11 @@ A single value, a vector with range values \code{c(min_val, max_val)} or NULL fo
 \item \strong{min_n}: Minimum Number of samples to split at each node.
 A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(5, 25).
 \item \strong{tree_depth}: Maximum tree depth.
-A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(3, 10).
+A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(3, 8).
 \item \strong{learn_rate}: Learning Rate.
-A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(-4, -1) in log10 scale.
+A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(-3, -1) in log10 scale.
 \item \strong{loss_reduction}: Minimum loss reduction required to make a further partition on a leaf node.
-A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(-5, 1.5) in log10 scale.
+A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(-3, 1.5) in log10 scale.
 }
 }
 
@@ -88,7 +93,7 @@ A single value, a vector with range values \code{c(min_val, max_val)} or NULL fo
 Parsnip model using \strong{kernlab} engine. Hyperparameters:
 \itemize{
 \item \strong{cost}: Penalty parameter that regulates model complexity and misclassification tolerance.
-A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(-3, 3) in log10 scale.
+A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(-3, 3) in log2 scale.
 \item \strong{margin}: Distance between the separating hyperplane and the nearest data points.
 A single value, a vector with range values \code{c(min_val, max_val)} or NULL for default range c(0, 0.2).
 \item \strong{type}: Kernel to be used.
@@ -106,10 +111,7 @@ A single value, a vector with range values \code{c(min_val, max_val)} or NULL fo
 \examples{
 # Example 1: Random Forest for regression task
 
-library(MLwrap)
-
-data(sim_data) # sim_data is a simulated dataset with psychological variables
-
+set.seed(123) # For reproducibility
 wrap_object <- preprocessing(
      df = sim_data,
      formula = psych_well ~ depression + emot_intel + resilience + life_sat,
@@ -124,13 +126,13 @@ wrap_object <- build_model(
                                  trees = 10
                                  )
                            )
-# It is safe to reuse the same object name (e.g., wrap_object, or whatever) step by step,
-# as all previous results and information are retained within the updated analysis object.
+# It is safe to reuse the same object name (e.g., wrap_object, or whatever)
+# step by step, as all previous results and information are retained within
+# the updated analysis object.
 
 # Example 2: SVM for classification task
 
-data(sim_data) # sim_data is a simulated dataset with psychological variables
-
+set.seed(123) # For reproducibility
 wrap_object <- preprocessing(
          df = sim_data,
          formula = psych_well_bin ~ depression + emot_intel + resilience + life_sat,
@@ -149,6 +151,7 @@ wrap_object <- build_model(
                            )
 }
 \references{
-James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). \emph{An Introduction to Statistical Learning:
-with Applications in R (2nd ed.)}. Springer. https://doi.org/10.1007/978-1-0716-1418-1
+James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). \emph{An Introduction
+to Statistical Learning: with Applications in R (2nd ed.)}. Springer.
+https://doi.org/10.1007/978-1-0716-1418-1
 }

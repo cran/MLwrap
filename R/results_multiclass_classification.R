@@ -10,7 +10,7 @@ get_predictions_multiclass <- function(analysis_object, new_data = "test"){
 
   if (new_data == "all"){
 
-    data_sets = c("train", "validation", "test")
+      data_sets = c("train", "test")
 
     temp = list()
 
@@ -26,7 +26,7 @@ get_predictions_multiclass <- function(analysis_object, new_data = "test"){
       temp[[data_set]] = predictions
     }
 
-    predictions = rbind(temp[["train"]], temp[["validation"]], temp[["test"]])
+    predictions = rbind(temp[["train"]], temp[["test"]])
 
   } else {
 

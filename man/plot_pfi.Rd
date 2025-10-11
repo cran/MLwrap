@@ -15,28 +15,22 @@ plot_pfi(analysis_object, show_table = FALSE)
 analysis_object
 }
 \description{
-The \strong{plot_pfi()} function generates bar plots to visualize feature importance through permutation,
-providing clear representation of each predictor variable's relative contribution to model performance.
-The function includes an option to display accompanying numerical results tables for comprehensive
-interpretation.
+The \strong{plot_pfi()} function generates bar plots to visualize feature
+importance through permutation, providing clear representation of each
+predictor variable's relative contribution to model performance. The
+function includes an option to display accompanying numerical results
+tables for comprehensive interpretation.
 }
 \examples{
 # Note: For obtaining the PFI plot results the user needs to complete till
 # sensitivity_analysis( ) function of the MLwrap pipeline using the PFI method.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
-
-# And then, you can obtain the PFI plot.
-
-plot_pfi(wrap_object)
+# See the full pipeline example under sensitivity_analysis()
+# (Requires sensitivity_analysis(methods = "PFI"))
+# Final call signature:
+# plot_pfi(wrap_object)
 
 }
-
+\seealso{
+\code{\link{sensitivity_analysis}}
 }

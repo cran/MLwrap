@@ -13,28 +13,22 @@ plot_distribution_by_class(analysis_object)
 analysis_object
 }
 \description{
-The \strong{plot_distribution_by_class()} function generates distributions of model output scores segmented by class,
-facilitating evaluation of separability between categories and identification of problematic overlaps. This
-visualization helps assess whether the model produces sufficiently distinct score distributions for different
-classes.
+The \strong{plot_distribution_by_class()} function generates distributions of
+model output scores segmented by class, facilitating evaluation of
+separability between categories and identification of problematic overlaps.
+This visualization helps assess whether the model produces sufficiently
+distinct score distributions for different classes.
 }
 \examples{
 # Note: For obtaining the distribution by class plot the user needs to
 # complete till fine_tuning( ) function of the MLwrap pipeline
 # and only with categorical outcome.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well_bin ~ depression + emot_intel + resilience,
-                             task = "classification")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-
-# And then, you can obtain the distribution by class plot.
-
-plot_distribution_by_class(wrap_object)
+# See the full pipeline example under plot_calibration_curve()
+# Final call signature:
+# plot_distribution_by_class(wrap_object)
 
 }
-
+\seealso{
+\code{\link{plot_calibration_curve}}
 }

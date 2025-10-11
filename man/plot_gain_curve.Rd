@@ -13,26 +13,21 @@ plot_gain_curve(analysis_object)
 analysis_object
 }
 \description{
-The \strong{plot_gain_curve()} function implements specialized visualizations for evaluating model effectiveness
-in marketing and case selection contexts. The gain curve shows cumulative gains as a function of population
-percentile, helping assess how well the model identifies high-value cases in ranked populations.
+The \strong{plot_gain_curve()} function implements specialized visualizations for
+evaluating model effectiveness in marketing and case selection contexts. The
+gain curve shows cumulative gains as a function of population percentile,
+helping assess how well the model identifies high-value cases in ranked
+populations.
 }
 \examples{
 # Note: For obtaining the gain curve plot the user needs to complete till fine_tuning( ) function
 # of the MLwrap pipeline and only with categorical outcome.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well_bin ~ depression + emot_intel + resilience,
-                             task = "classification")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-
-# And then, you can obtain the gain curve plot.
-
-plot_gain_curve(wrap_object)
+# See the full pipeline example under plot_calibration_curve()
+# Final call signature:
+# plot_gain_curve(wrap_object)
 
 }
-
+\seealso{
+\code{\link{plot_calibration_curve}}
 }

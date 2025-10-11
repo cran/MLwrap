@@ -13,28 +13,27 @@ plot_calibration_curve(analysis_object)
 analysis_object
 }
 \description{
-The \strong{plot_calibration_curve()} function is specifically designed for binary classification and produces
-calibration curves that evaluate correspondence between predicted probabilities and observed frequencies.
-This function is restricted to binary classification problems and provides crucial information about the
-reliability of the model's probabilistic estimates.
+The \strong{plot_calibration_curve()} function is specifically designed for binary
+classification and produces calibration curves that evaluate correspondence
+between predicted probabilities and observed frequencies. This function is
+restricted to binary classification problems and provides crucial information
+about the reliability of the model's probabilistic estimates.
 }
 \examples{
 # Note: For obtaining the calibration curve plot the user needs to
 # complete till fine_tuning( ) function of the MLwrap pipeline and
 # only with binary outcome.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well_bin ~ depression + emot_intel + resilience,
+set.seed(123) # For reproducibility
+wrap_object <- preprocessing(df = sim_data[1:300 ,],
+                             formula = psych_well_bin ~ depression + resilience,
                              task = "classification")
-wrap_object <- build_model(wrap_object, "Random Forest")
+wrap_object <- build_model(wrap_object, "Random Forest",
+                           hyperparameters = list(mtry = 2, trees = 5))
 wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 
 # And then, you can obtain the calibration curve plot.
 
 plot_calibration_curve(wrap_object)
-
-}
 
 }

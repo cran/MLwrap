@@ -15,27 +15,23 @@ plot_sobol_jansen(analysis_object, show_table = FALSE)
 analysis_object
 }
 \description{
-The \strong{plot_sobol_jansen()} function produces bar plots for Sobol-Jansen analysis results, offering a
-global sensitivity perspective based on variance decomposition. This methodology is particularly valuable
-for identifying higher-order effects and complex interactions between variables in model predictions.
+The \strong{plot_sobol_jansen()} function produces bar plots for Sobol-Jansen
+analysis results, offering a global sensitivity perspective based on variance
+decomposition. This methodology is particularly valuable for identifying
+higher-order effects and complex interactions between variables in model
+predictions.
 }
 \examples{
-# Note: For obtaining the Sobol_Jansen plot the user needs to complete till sensitivity_analysis( )
-# function of the MLwrap pipeline using the Sobol_Jansen method.
+# Note: For obtaining the Sobol_Jansen plot the user needs to complete till
+# sensitivity_analysis( ) function of the MLwrap pipeline using
+# the Sobol_Jansen method.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-wrap_object <- sensitivity_analysis(wrap_object, methods = "Sobol_Jansen")
-
-# And then, you can obtain the Sobol_Jansen plot.
-
-plot_sobol_jansen(wrap_object)
+# See the full pipeline example under sensitivity_analysis()
+# (Requires sensitivity_analysis(methods = "Sobol_Jansen"))
+# Final call signature:
+# plot_sobol_jansen(wrap_object)
 
 }
-
+\seealso{
+\code{\link{sensitivity_analysis}}
 }

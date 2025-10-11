@@ -15,31 +15,23 @@ plot_olden(analysis_object, show_table = FALSE)
 analysis_object
 }
 \description{
-The \strong{plot_olden()} function generates specialized bar plots for visualizing Olden method results, which provide
-importance measures specific to neural networks based on connection weight analysis. This method offers insights
-into how input variables influence predictions through the network's synaptic connections.
+The \strong{plot_olden()} function generates specialized bar plots for visualizing
+Olden method results, which provide importance measures specific to neural
+networks based on connection weight analysis. This method offers insights
+into how input variables influence predictions through the network's synaptic
+connections.
 }
 \examples{
-# Note: For obtaining the Olden plot the user needs to complete till sensitivity_analysis( )
-# function of the MLwrap pipeline using the Olden method.
+# Note: For obtaining the Olden plot the user needs to complete till
+# sensitivity_analysis( ) function of the MLwrap pipeline using the Olden
+# method.
 
-if (requireNamespace("torch", quietly = TRUE)) {
-
-  \dontrun{
-
-  wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-  wrap_object <- build_model(wrap_object, "Neural Network")
-  wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-  wrap_object <- sensitivity_analysis(wrap_object, methods = "Olden")
-
-  # And then, you can obtain the Olden plot.
-
-  plot_olden(wrap_object)
-
-  }
+# See the full pipeline example under sensitivity_analysis()
+# (Requires sensitivity_analysis(methods = "Olden"))
+# Final call signature:
+# plot_olden(wrap_object)
 
 }
-
+\seealso{
+\code{\link{sensitivity_analysis}}
 }

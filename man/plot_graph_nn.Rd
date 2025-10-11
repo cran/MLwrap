@@ -13,28 +13,19 @@ plot_graph_nn(analysis_object)
 analysis_object
 }
 \description{
-Plots a graph visualization of the Neural Network's architecture along with its optimized hyperparameters.
+Plots a graph visualization of the Neural Network's architecture along with
+its optimized hyperparameters.
 }
 \examples{
-# Note: For obtaining the Neural Network architecture graph plot the user needs to
-# complete till the fine_tuning( ) function of the MLwrap pipeline.
+# Note: For obtaining the Neural Network architecture graph plot the user needs
+# to complete till the fine_tuning( ) function of the MLwrap pipeline.
 
-if (requireNamespace("torch", quietly = TRUE)) {
-
-  \dontrun{
-
-  wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-  wrap_object <- build_model(wrap_object, "Neural Network")
-  wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-
-  # And then, you can obtain the Neural Network architecture graph plot.
-
-  plot_graph_nn(wrap_object)
-
-  }
+  # See the full pipeline example under table_best_hyperparameters()
+  # (Neural Network engine required)
+  # Final call signature:
+  # plot_graph_nn(wrap_object)
 
 }
-
+\seealso{
+\code{\link{table_best_hyperparameters}}
 }

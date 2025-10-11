@@ -13,26 +13,22 @@ plot_lift_curve(analysis_object)
 analysis_object
 }
 \description{
-The \strong{plot_lift_curve()} function produces lift curves that display the lift factor as a function of population
-percentile. This visualization is particularly useful for direct marketing applications, showing how much
-better the model performs compared to random selection at different population segments.
+The \strong{plot_lift_curve()} function produces lift curves that display the lift
+factor as a function of population percentile. This visualization is
+particularly useful for direct marketing applications, showing how much
+better the model performs compared to random selection at different population
+segments.
 }
 \examples{
-# Note: For obtaining the lift curve plot the user needs to complete till fine_tuning( ) function
-# of the MLwrap pipeline and only with categorical outcome.
+# Note: For obtaining the lift curve plot the user needs to complete till
+# fine_tuning( ) function of the MLwrap pipeline and only with categorical
+# outcome.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well_bin ~ depression + emot_intel + resilience,
-                             task = "classification")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-
-# And then, you can obtain the lift curve plot.
-
-plot_lift_curve(wrap_object)
+# See the full pipeline example under plot_calibration_curve()
+# Final call signature:
+# plot_lift_curve(wrap_object)
 
 }
-
+\seealso{
+\code{\link{plot_calibration_curve}}
 }

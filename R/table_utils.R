@@ -1,14 +1,19 @@
 ### Tuning Results
 #' Best Hyperparameters Configuration
 #'
+#' @name table_best_hyperparameters
+#' @aliases table_best_hyperparameters
+#'
 #' @description
 #'
-#' The **table_best_hyperparameters()** function extracts and presents the optimal hyperparameter configuration
-#' identified during the model fine-tuning process. This function validates that the model has been properly
-#' trained and that hyperparameter tuning has been performed, combining both constant and optimized
-#' hyperparameters to generate a comprehensive table with the configuration that maximizes performance
-#' according to the specified primary metric. The function includes optional interactive visualization
-#' capabilities through the show_table parameter.
+#' The **table_best_hyperparameters()** function extracts and presents the optimal
+#' hyperparameter configuration identified during the model fine-tuning process.
+#' This function validates that the model has been properly trained and that
+#' hyperparameter tuning has been performed, combining both constant and optimized
+#' hyperparameters to generate a comprehensive table with the configuration that
+#' maximizes performance according to the specified primary metric. The function
+#' includes optional interactive visualization capabilities through the show_table
+#' parameter.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -19,19 +24,17 @@
 #' # Note: For obtaining hyoperparameters table the user needs to
 #' # complete till fine_tuning( ) function.
 #'
-#'   \dontrun{
-#'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
+#' set.seed(123) # For reproducibility
+#' wrap_object <- preprocessing(df = sim_data[1:300 ,],
+#'                              formula = psych_well ~ depression + resilience,
 #'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- build_model(wrap_object, "Random Forest",
+#'                            hyperparameters = list(mtry = 2, trees = 3))
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the best hyperparameters table.
 #'
 #' table_best_hyp <- table_best_hyperparameters(wrap_object)
-#'
-#' }
 #'
 #' @export
 table_best_hyperparameters <- function(analysis_object, show_table = FALSE){
@@ -78,10 +81,12 @@ table_best_hyperparameters <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **table_evaluation_results()** function provides access to trained model evaluation metrics, automatically
-#' adapting to the type of problem being analyzed. For binary classification problems, it returns a unified
-#' table with performance metrics, while for multiclass classification it generates separate tables for training
-#' and test data, enabling comparative performance evaluation and detection of potential overfitting.
+#' The **table_evaluation_results()** function provides access to trained model
+#' evaluation metrics, automatically adapting to the type of problem being analyzed.
+#' For binary classification problems, it returns a unified table with performance
+#' metrics, while for multiclass classification it generates separate tables for
+#' training and test data, enabling comparative performance evaluation and
+#' detection of potential overfitting.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -92,19 +97,12 @@ table_best_hyperparameters <- function(analysis_object, show_table = FALSE){
 #' # Note: For obtaining the evaluation table the user needs to
 #' # complete till fine_tuning( ) function.
 #'
-#' \dontrun{
+#' @seealso \code{\link{table_best_hyperparameters}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-#'
-#' # And then, you can obtain the evaluation table.
-#'
-#' table_results <- table_evaluation_results(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under table_best_hyperparameters()
+#' # Final call signature:
+#' # table_evaluation_results(wrap_object)
 #'
 #' @export
 table_evaluation_results <- function(analysis_object, show_table = FALSE){
@@ -172,9 +170,9 @@ table_evaluation_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **table_pfi_results()** function extracts Permutation Feature Importance results, a model-agnostic
-#' technique that evaluates variable importance through performance degradation when randomly permuting
-#' each feature's values.
+#' The **table_pfi_results()** function extracts Permutation Feature Importance
+#' results, a model-agnostic technique that evaluates variable importance through
+#' performance degradation when randomly permuting each feature's values.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "PFI")'.
 #'
@@ -184,22 +182,20 @@ table_evaluation_results <- function(analysis_object, show_table = FALSE){
 #' @examples
 #' # Note: For obtaining the table with PFI method results the user needs to
 #' # complete till sensitivity_analysis() function of the
-#' # MLwrap pipeline using PFI method.
+#' # MLwrap pipeline using PFI method
 #'
-#' \dontrun{
-#'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
+#' set.seed(123) # For reproducibility
+#' wrap_object <- preprocessing(df = sim_data[1:300 ,],
+#'                              formula = psych_well ~ depression + emot_intel,
 #'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+#' wrap_object <- build_model(wrap_object, "Random Forest",
+#'                            hyperparameters = list(mtry = 2, trees = 3))
+#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #' wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
 #'
 #' # And then, you can obtain the PFI results table.
 #'
 #' table_pfi <- table_pfi_results(wrap_object)
-#'
-#' }
 #'
 #' @export
 table_pfi_results <- function(analysis_object, show_table = FALSE){
@@ -252,11 +248,13 @@ table_pfi_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **table_shap_results()** function processes previously calculated SHAP (SHapley Additive exPlanations)
-#' values and generates summarized metrics including mean absolute value, standard deviation of mean absolute
-#' value, and a directional sensitivity value calculated as the covariance between feature values and SHAP
-#' values divided by the variance of feature values. This directional metric provides information about the
-#' nature of the relationship between each variable and model predictions. To summarize the SHAP values
+#' The **table_shap_results()** function processes previously calculated SHAP
+#' (SHapley Additive exPlanations) values and generates summarized metrics
+#' including mean absolute value, standard deviation of mean absolute value, and
+#' a directional sensitivity value calculated as the covariance between feature
+#' values and SHAP values divided by the variance of feature values. This
+#' directional metric provides information about the nature of the relationship
+#' between each variable and model predictions. To summarize the SHAP values
 #' calculated, three different metrics are computed:
 #'
 #' * **Mean Absolute Value**
@@ -273,20 +271,13 @@ table_pfi_results <- function(analysis_object, show_table = FALSE){
 #' # to complete till sensitivity_analysis() function of the
 #' # MLwrap pipeline using the SHAP method.
 #'
-#' \dontrun{
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-#' wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
-#'
-#' # And then, you can obtain the SHAP results table.
-#'
-#' table_shap <- table_shap_results(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis
+#' # (Requires sensitivity_analysis(methods = "SHAP"))
+#' # Final call signature:
+#' # table_shap_results(wrap_object)
 #'
 #' @export
 table_shap_results <- function(analysis_object, show_table = FALSE){
@@ -339,10 +330,12 @@ table_shap_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **table_integrated_gradients_results()** function implements the same summarized metrics scheme for
-#' Integrated Gradients values, a methodology specifically designed for neural networks that calculates
-#' feature importance through gradient integration along paths from a baseline to the current input. To
-#' summarize the Integrated Gradients values calculated, three different metrics are computed:
+#' The **table_integrated_gradients_results()** function implements the same
+#' summarized metrics scheme for Integrated Gradients values, a methodology
+#' specifically designed for neural networks that calculates feature importance
+#' through gradient integration along paths from a baseline to the current input.
+#' To summarize the Integrated Gradients values calculated, three different
+#' metrics are computed:
 #'
 #' * **Mean Absolute Value**
 #' * **Standard Deviation of Mean Absolute Value**
@@ -359,24 +352,13 @@ table_shap_results <- function(analysis_object, show_table = FALSE){
 #' # the user needs to complete till sensitivity_analysis() function of the
 #' # MLwrap pipeline using the Integrated Gradient method.
 #'
-#' if (requireNamespace("torch", quietly = TRUE)) {
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#'   \dontrun{
-#'
-#'   wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-#'   wrap_object <- sensitivity_analysis(wrap_object, methods = "Integrated Gradients")
-#'
-#'   # And then, you can obtain the Integrated Gradients results table.
-#'
-#'   table_IG <- table_integrated_gradients_results(wrap_object)
-#'
-#'   }
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis
+#' # (Requires sensitivity_analysis(methods = "Integrated Gradients"))
+#' # Final call signature:
+#' # table_integrated_gradients_results(wrap_object)
 #'
 #' @export
 table_integrated_gradients_results <- function(analysis_object, show_table = FALSE){
@@ -429,10 +411,11 @@ table_integrated_gradients_results <- function(analysis_object, show_table = FAL
 #'
 #' @description
 #'
-#' The **table_olden_results()** function extracts results from the Olden method, a technique specific to
-#' neural networks that calculates relative importance of input variables through analysis of connection
-#' weights between network layers. This method provides a measure of each variable's contribution based
-#' on the magnitude and direction of synaptic connections.
+#' The **table_olden_results()** function extracts results from the Olden method,
+#' a technique specific to neural networks that calculates relative importance of
+#' input variables through analysis of connection weights between network layers.
+#' This method provides a measure of each variable's contribution based on the
+#' magnitude and direction of synaptic connections.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Olden")'.
 #'
@@ -440,28 +423,18 @@ table_integrated_gradients_results <- function(analysis_object, show_table = FAL
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with Olden results.
 #' @examples
-#' # Note: For obtaining the table with Olden method results the user needs to complete till
-#' # sensitivity_analysis() function of the MLwrap pipeline using the Olden method.
-#' # Remember Olden method only can be used with neural network model.
+#' # Note: For obtaining the table with Olden method results the user needs to
+#' # complete till sensitivity_analysis() function of the MLwrap pipeline using
+#' # the Olden method. Remember Olden method only can be used with neural
+#' # network model.
 #'
-#' if (requireNamespace("torch", quietly = TRUE)) {
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#'   \dontrun{
-#'
-#'   wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-#'   wrap_object <- sensitivity_analysis(wrap_object, methods = "Olden")
-#'
-#'   # And then, you can obtain the Olden results table.
-#'
-#'   table_Olden <- table_olden_results(wrap_object)
-#'
-#'   }
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis
+#' # (Requires sensitivity_analysis(methods = "Olden"))
+#' # Final call signature:
+#' # table_olden_results(wrap_object)
 #'
 #' @export
 table_olden_results <- function(analysis_object, show_table = FALSE){
@@ -471,6 +444,12 @@ table_olden_results <- function(analysis_object, show_table = FALSE){
   if (is.null(olden)){
 
     stop("You first need to compute Olden values using 'sensitivity_analysis()'!")
+
+  }
+
+  if (analysis_object$outcome_levels < 2){
+
+    olden <- olden[order(-abs(olden$Importance)), ]
 
   }
 
@@ -494,10 +473,12 @@ table_olden_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **table_sobol_jansen_results()** function processes results from Sobol-Jansen global sensitivity analysis,
-#' a variance decomposition-based methodology that quantifies each variable's contribution and their interactions
-#' to the total variability of model predictions. This technique is particularly valuable for identifying
-#' higher-order effects and complex interactions between variables.
+#' The **table_sobol_jansen_results()** function processes results from
+#' Sobol-Jansen global sensitivity analysis, a variance decomposition-based
+#' methodology that quantifies each variable's contribution and their
+#' interactions to the total variability of model predictions. This technique
+#' is particularly valuable for identifying higher-order effects and complex
+#' interactions between variables.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Sobol_Jansen")'.
 #'
@@ -505,25 +486,18 @@ table_olden_results <- function(analysis_object, show_table = FALSE){
 #'
 #' @returns Tibble or list of tibbles (multiclass classification) with Sobol-Jansen results.
 #' @examples
-#' # Note: For obtaining the table with Sobol_Jansen method results
-#' # the user needs to complete till sensitivity_analysis() function of the
-#' # MLwrap pipeline using the Sobol_Jansen method.
-#' # Sobol_Jansen method only works when all input features are continuous.
+#' # Note: For obtaining the table with Sobol_Jansen method results the user
+#' # needs to complete till sensitivity_analysis() function of the MLwrap
+#' # pipeline using the Sobol_Jansen method. Sobol_Jansen method only works
+#' # when all input features are continuous.
 #'
-#' \dontrun{
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-#' wrap_object <- sensitivity_analysis(wrap_object, methods = "Sobol_Jansen")
-#'
-#' # And then, you can obtain the Sobol_Jansen results table.
-#'
-#' table_Sobol <- table_sobol_jansen_results(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis
+#' # (Requires sensitivity_analysis(methods = "Sobol_Jansen"))
+#' # Final call signature:
+#' # table_sobol_jansen_results(wrap_object)
 #'
 #' @export
 table_sobol_jansen_results <- function(analysis_object, show_table = FALSE){

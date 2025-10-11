@@ -15,28 +15,26 @@ table_pfi_results(analysis_object, show_table = FALSE)
 Tibble or list of tibbles (multiclass classification) with PFI results.
 }
 \description{
-The \strong{table_pfi_results()} function extracts Permutation Feature Importance results, a model-agnostic
-technique that evaluates variable importance through performance degradation when randomly permuting
-each feature's values.
+The \strong{table_pfi_results()} function extracts Permutation Feature Importance
+results, a model-agnostic technique that evaluates variable importance through
+performance degradation when randomly permuting each feature's values.
 }
 \examples{
 # Note: For obtaining the table with PFI method results the user needs to
 # complete till sensitivity_analysis() function of the
-# MLwrap pipeline using PFI method.
+# MLwrap pipeline using PFI method
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
+set.seed(123) # For reproducibility
+wrap_object <- preprocessing(df = sim_data[1:300 ,],
+                             formula = psych_well ~ depression + emot_intel,
                              task = "regression")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
+wrap_object <- build_model(wrap_object, "Random Forest",
+                           hyperparameters = list(mtry = 2, trees = 3))
+wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
 
 # And then, you can obtain the PFI results table.
 
 table_pfi <- table_pfi_results(wrap_object)
-
-}
 
 }

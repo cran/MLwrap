@@ -4,11 +4,13 @@
 #'
 #' @description
 #'
-#' The **plot_tuning_results()** function generates graphical representations of hyperparameter search results,
-#' automatically adapting to the type of optimizer used. When Bayesian optimization is employed, the function
-#' presents additional plots showing the iterative evolution of the loss function and search results throughout
-#' the optimization process. This function validates that model fitting has been completed and that hyperparameter
-#' tuning was actually performed before attempting to display results.
+#' The **plot_tuning_results()** function generates graphical representations of
+#' hyperparameter search results, automatically adapting to the type of optimizer
+#' used. When Bayesian optimization is employed, the function presents additional
+#' plots showing the iterative evolution of the loss function and search results
+#' throughout the optimization process. This function validates that model fitting
+#' has been completed and that hyperparameter tuning was actually performed before
+#' attempting to display results.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -17,19 +19,12 @@
 #' # Note: For obtaining the plot with tuning results the user needs to complete till
 #' # fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \dontrun{
+#' @seealso \code{\link{table_best_hyperparameters}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the tuning results plot.
-#'
-#' plot_tuning_results(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under table_best_hyperparameters()
+#' # Final call signature:
+#' # plot_tuning_results(wrap_object)
 #'
 #' @export
 plot_tuning_results <- function(analysis_object){
@@ -67,8 +62,8 @@ plot_tuning_results <- function(analysis_object){
 #'
 #' @description
 #'
-#' Plots the training loss curve of the Neural Network model on the validation set. This plot can be used
-#' for underfitting / overfitting diagnostics.
+#' Plots the training loss curve of the Neural Network model on the validation
+#' set. This plot can be used for underfitting / overfitting diagnostics.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -79,23 +74,13 @@ plot_tuning_results <- function(analysis_object){
 #' # Note: For obtaining the loss curve plot the user needs to
 #' # complete till the fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' if (requireNamespace("torch", quietly = TRUE)) {
+#' @seealso \code{\link{table_best_hyperparameters}}
 #'
-#'   \dontrun{
-#'
-#'   wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#'   # And then, you can obtain the loss curve plot.
-#'
-#'   plot_loss_curve(wrap_object)
-#'
-#'   }
-#'
-#' }
+#' @examples
+#'   # See the full pipeline example under table_best_hyperparameters()
+#'   # (Neural Network engine required)
+#'   # Final call signature:
+#'   # plot_loss_curve(wrap_object)
 #'
 #' @export
 plot_loss_curve <- function(analysis_object){
@@ -125,34 +110,24 @@ plot_loss_curve <- function(analysis_object){
 #'
 #' @description
 #'
-#' Plots a graph visualization of the Neural Network's architecture along with its optimized hyperparameters.
-#'
+#' Plots a graph visualization of the Neural Network's architecture along with
+#' its optimized hyperparameters.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
 #' @returns analysis_object
 #'
 #' @examples
-#' # Note: For obtaining the Neural Network architecture graph plot the user needs to
-#' # complete till the fine_tuning( ) function of the MLwrap pipeline.
+#' # Note: For obtaining the Neural Network architecture graph plot the user needs
+#' # to complete till the fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' if (requireNamespace("torch", quietly = TRUE)) {
+#' @seealso \code{\link{table_best_hyperparameters}}
 #'
-#'   \dontrun{
-#'
-#'   wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#'   # And then, you can obtain the Neural Network architecture graph plot.
-#'
-#'   plot_graph_nn(wrap_object)
-#'
-#'   }
-#'
-#' }
+#' @examples
+#'   # See the full pipeline example under table_best_hyperparameters()
+#'   # (Neural Network engine required)
+#'   # Final call signature:
+#'   # plot_graph_nn(wrap_object)
 #'
 #' @export
 plot_graph_nn <- function(analysis_object){
@@ -190,9 +165,10 @@ plot_graph_nn <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_residuals_distribution()** function generates histograms of residual distributions for both
-#' training and test data in regression problems. This visualization enables evaluation of error normality
-#' and detection of systematic patterns in model residuals. The function uses patchwork to combine training
+#' The **plot_residuals_distribution()** function generates histograms of residual
+#' distributions for both training and test data in regression problems. This
+#' visualization enables evaluation of error normality and detection of systematic
+#' patterns in model residuals. The function uses patchwork to combine training
 #' and test plots in a single display for direct comparison.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
@@ -202,19 +178,12 @@ plot_graph_nn <- function(analysis_object){
 #' # Note: For obtaining the residuals distribution plot the user needs to
 #' # complete till fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \dontrun{
+#' @seealso \code{\link{table_best_hyperparameters}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the residuals distribution plot.
-#'
-#' plot_residuals_distribution(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under table_best_hyperparameters()
+#' # Final call signature:
+#' # plot_residuals_distribution(wrap_object)
 #'
 #' @export
 plot_residuals_distribution <- function(analysis_object){
@@ -248,19 +217,12 @@ plot_residuals_distribution <- function(analysis_object){
 #' # Note: For obtaining the residuals vs. predicted values plot the user needs to
 #' # complete till fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \dontrun{
+#' @seealso \code{\link{table_best_hyperparameters}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the residuals vs predicted values plot.
-#'
-#' plot_scatter_residuals(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under table_best_hyperparameters()
+#' # Final call signature:
+#' # plot_scatter_residuals(wrap_object)
 #'
 #' @export
 plot_scatter_residuals <- function(analysis_object){
@@ -282,10 +244,11 @@ plot_scatter_residuals <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_scatter_predictions()** function generates scatter plots between observed and predicted values,
-#' providing direct visual assessment of model predictive accuracy. The function displays both training and
-#' test results side by side, enabling evaluation of model generalization performance and identification of
-#' potential overfitting.
+#' The **plot_scatter_predictions()** function generates scatter plots between
+#' observed and predicted values, providing direct visual assessment of model
+#' predictive accuracy. The function displays both training and test results side
+#' by side, enabling evaluation of model generalization performance and
+#' identification of potential overfitting.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -294,19 +257,12 @@ plot_scatter_residuals <- function(analysis_object){
 #' # Note: For obtaining the observed vs. predicted values plot the user needs to
 #' # complete till fine_tuning( ) function of the MLwrap pipeline.
 #'
-#' \dontrun{
+#' @seealso \code{\link{table_best_hyperparameters}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the observed vs predicted values plot.
-#'
-#' plot_scatter_predictions(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under table_best_hyperparameters()
+#' # Final call signature:
+#' # plot_scatter_predictions(wrap_object)
 #'
 #' @export
 plot_scatter_predictions <- function(analysis_object){
@@ -331,10 +287,11 @@ plot_scatter_predictions <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_confusion_matrix()** function generates confusion matrices for both training and test data
-#' in classification problems. This visualization allows evaluation of classification accuracy by category
-#' and identification of confusion patterns between classes, providing insights into which classes are most
-#' frequently misclassified.
+#' The **plot_confusion_matrix()** function generates confusion matrices for both
+#' training and test data in classification problems. This visualization allows
+#' evaluation of classification accuracy by category and identification of
+#' confusion patterns between classes, providing insights into which classes are
+#' most frequently misclassified.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -344,19 +301,12 @@ plot_scatter_predictions <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline and
 #' # only with categorical outcome.
 #'
-#' \dontrun{
+#' @seealso \code{\link{plot_calibration_curve}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
-#'                              task = "classification")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the confusion matrix plot.
-#'
-#' plot_confusion_matrix(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under plot_calibration_curve()
+#' # Final call signature:
+#' # plot_confusion_matrix(wrap_object)
 #'
 #' @export
 plot_confusion_matrix <- function(analysis_object){
@@ -379,9 +329,11 @@ plot_confusion_matrix <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_roc_curve()** function produces ROC (Receiver Operating Characteristic) curves, providing fundamental
-#' visual metrics for evaluating binary and multiclass classifier performance. The ROC curve illustrates the
-#' trade-off between true positive rate and false positive rate across different classification thresholds.
+#' The **plot_roc_curve()** function produces ROC (Receiver Operating
+#' Characteristic) curves, providing fundamental visual metrics for evaluating
+#' binary and multiclass classifier performance. The ROC curve illustrates the
+#' trade-off between true positive rate and false positive rate across different
+#' classification thresholds.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -391,19 +343,12 @@ plot_confusion_matrix <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline and
 #' # only with categorical outcome.
 #'
-#' \dontrun{
+#' @seealso \code{\link{plot_calibration_curve}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
-#'                              task = "classification")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the roc curve plot.
-#'
-#' plot_roc_curve(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under plot_calibration_curve()
+#' # Final call signature:
+#' # plot_roc_curve(wrap_object)
 #'
 #' @export
 plot_roc_curve <- function(analysis_object){
@@ -424,13 +369,21 @@ plot_roc_curve <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_pr_curve()** function generates precision-recall curves, which are particularly valuable for evaluating
-#' classifier performance on imbalanced datasets. These curves show the relationship between precision and recall
+#' The **plot_pr_curve()** function generates precision-recall curves, which are
+#' particularly valuable for evaluating classifier performance on imbalanced
+#' datasets. These curves show the relationship between precision and recall
 #' across different decision thresholds, complementing ROC curve analysis.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
 #' @returns analysis_object
+#'
+#' @seealso \code{\link{plot_calibration_curve}}
+#'
+#' @examples
+#' # See the full pipeline example under plot_calibration_curve()
+#' # Final call signature:
+#' # plot_pr_curve(wrap_object)
 #'
 #' @export
 plot_pr_curve <- function(analysis_object){
@@ -451,9 +404,11 @@ plot_pr_curve <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_gain_curve()** function implements specialized visualizations for evaluating model effectiveness
-#' in marketing and case selection contexts. The gain curve shows cumulative gains as a function of population
-#' percentile, helping assess how well the model identifies high-value cases in ranked populations.
+#' The **plot_gain_curve()** function implements specialized visualizations for
+#' evaluating model effectiveness in marketing and case selection contexts. The
+#' gain curve shows cumulative gains as a function of population percentile,
+#' helping assess how well the model identifies high-value cases in ranked
+#' populations.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -462,19 +417,12 @@ plot_pr_curve <- function(analysis_object){
 #' # Note: For obtaining the gain curve plot the user needs to complete till fine_tuning( ) function
 #' # of the MLwrap pipeline and only with categorical outcome.
 #'
-#' \dontrun{
+#' @seealso \code{\link{plot_calibration_curve}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
-#'                              task = "classification")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the gain curve plot.
-#'
-#' plot_gain_curve(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under plot_calibration_curve()
+#' # Final call signature:
+#' # plot_gain_curve(wrap_object)
 #'
 #' @export
 plot_gain_curve <- function(analysis_object){
@@ -495,30 +443,26 @@ plot_gain_curve <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_lift_curve()** function produces lift curves that display the lift factor as a function of population
-#' percentile. This visualization is particularly useful for direct marketing applications, showing how much
-#' better the model performs compared to random selection at different population segments.
+#' The **plot_lift_curve()** function produces lift curves that display the lift
+#' factor as a function of population percentile. This visualization is
+#' particularly useful for direct marketing applications, showing how much
+#' better the model performs compared to random selection at different population
+#' segments.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
 #' @returns analysis_object
 #' @examples
-#' # Note: For obtaining the lift curve plot the user needs to complete till fine_tuning( ) function
-#' # of the MLwrap pipeline and only with categorical outcome.
+#' # Note: For obtaining the lift curve plot the user needs to complete till
+#' # fine_tuning( ) function of the MLwrap pipeline and only with categorical
+#' # outcome.
 #'
-#' \dontrun{
+#' @seealso \code{\link{plot_calibration_curve}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
-#'                              task = "classification")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the lift curve plot.
-#'
-#' plot_lift_curve(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under plot_calibration_curve()
+#' # Final call signature:
+#' # plot_lift_curve(wrap_object)
 #'
 #' @export
 plot_lift_curve <- function(analysis_object){
@@ -539,10 +483,11 @@ plot_lift_curve <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_distribution_by_class()** function generates distributions of model output scores segmented by class,
-#' facilitating evaluation of separability between categories and identification of problematic overlaps. This
-#' visualization helps assess whether the model produces sufficiently distinct score distributions for different
-#' classes.
+#' The **plot_distribution_by_class()** function generates distributions of
+#' model output scores segmented by class, facilitating evaluation of
+#' separability between categories and identification of problematic overlaps.
+#' This visualization helps assess whether the model produces sufficiently
+#' distinct score distributions for different classes.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -552,19 +497,12 @@ plot_lift_curve <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline
 #' # and only with categorical outcome.
 #'
-#' \dontrun{
+#' @seealso \code{\link{plot_calibration_curve}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
-#'                              task = "classification")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'
-#' # And then, you can obtain the distribution by class plot.
-#'
-#' plot_distribution_by_class(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under plot_calibration_curve()
+#' # Final call signature:
+#' # plot_distribution_by_class(wrap_object)
 #'
 #' @export
 plot_distribution_by_class <- function(analysis_object){
@@ -585,12 +523,16 @@ plot_distribution_by_class <- function(analysis_object){
 
 #' Plotting Calibration Curve
 #'
+#' @name plot_calibration_curve
+#' @aliases plot_calibration_curve
+#'
 #' @description
 #'
-#' The **plot_calibration_curve()** function is specifically designed for binary classification and produces
-#' calibration curves that evaluate correspondence between predicted probabilities and observed frequencies.
-#' This function is restricted to binary classification problems and provides crucial information about the
-#' reliability of the model's probabilistic estimates.
+#' The **plot_calibration_curve()** function is specifically designed for binary
+#' classification and produces calibration curves that evaluate correspondence
+#' between predicted probabilities and observed frequencies. This function is
+#' restricted to binary classification problems and provides crucial information
+#' about the reliability of the model's probabilistic estimates.
 #'
 #' @param analysis_object Fitted analysis_object with 'fine_tuning()'.
 #'
@@ -600,19 +542,17 @@ plot_distribution_by_class <- function(analysis_object){
 #' # complete till fine_tuning( ) function of the MLwrap pipeline and
 #' # only with binary outcome.
 #'
-#' \dontrun{
-#'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well_bin ~ depression + emot_intel + resilience,
+#' set.seed(123) # For reproducibility
+#' wrap_object <- preprocessing(df = sim_data[1:300 ,],
+#'                              formula = psych_well_bin ~ depression + resilience,
 #'                              task = "classification")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
+#' wrap_object <- build_model(wrap_object, "Random Forest",
+#'                            hyperparameters = list(mtry = 2, trees = 5))
 #' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
 #'
 #' # And then, you can obtain the calibration curve plot.
 #'
 #' plot_calibration_curve(wrap_object)
-#'
-#' }
 #'
 #' @export
 plot_calibration_curve <- function(analysis_object){
@@ -627,9 +567,9 @@ plot_calibration_curve <- function(analysis_object){
 
   }
 
-  p_train <- plots$reliability_plot_train + ggplot2::ggtitle("Train data")
+  p_train <- plots$reliability_plot_train + ggplot2::ggtitle("Reliability Plot (train data)")
 
-  p_test  <- plots$reliability_plot_test  + ggplot2::ggtitle("Test data")
+  p_test  <- plots$reliability_plot_test  + ggplot2::ggtitle("Reliability Plot (test data)")
 
   plot(patchwork::wrap_plots(p_train, p_test, nrow = 2))
 
@@ -641,10 +581,11 @@ plot_calibration_curve <- function(analysis_object){
 #'
 #' @description
 #'
-#' The **plot_pfi()** function generates bar plots to visualize feature importance through permutation,
-#' providing clear representation of each predictor variable's relative contribution to model performance.
-#' The function includes an option to display accompanying numerical results tables for comprehensive
-#' interpretation.
+#' The **plot_pfi()** function generates bar plots to visualize feature
+#' importance through permutation, providing clear representation of each
+#' predictor variable's relative contribution to model performance. The
+#' function includes an option to display accompanying numerical results
+#' tables for comprehensive interpretation.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "PFI")'.
 #'
@@ -655,20 +596,13 @@ plot_calibration_curve <- function(analysis_object){
 #' # Note: For obtaining the PFI plot results the user needs to complete till
 #' # sensitivity_analysis( ) function of the MLwrap pipeline using the PFI method.
 #'
-#' \dontrun{
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#' wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
-#'
-#' # And then, you can obtain the PFI plot.
-#'
-#' plot_pfi(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis()
+#' # (Requires sensitivity_analysis(methods = "PFI"))
+#' # Final call signature:
+#' # plot_pfi(wrap_object)
 #'
 #' @export
 plot_pfi <- function(analysis_object, show_table = FALSE){
@@ -707,11 +641,12 @@ plot_pfi <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **plot_shap()** function implements a comprehensive set of visualizations for SHAP values, including bar
-#' plots of mean absolute values, directional plots showing positive or negative contribution nature, box plots
-#' illustrating SHAP value distributions by variable, and swarm plots combining individual and distributional
-#' information. This multifaceted approach enables deep understanding of how each feature influences model
-#' predictions.
+#' The **plot_shap()** function implements a comprehensive set of visualizations
+#' for SHAP values, including bar plots of mean absolute values, directional
+#' plots showing positive or negative contribution nature, box plots
+#' illustrating SHAP value distributions by variable, and swarm plots combining
+#' individual and distributional information. This multifaceted approach enables
+#' deep understanding of how each feature influences model predictions.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "SHAP")'.
 #'
@@ -719,23 +654,16 @@ plot_pfi <- function(analysis_object, show_table = FALSE){
 #'
 #' @returns analysis_object
 #' @examples
-#' # Note: For obtaining the SHAP plots the user needs to complete till sensitivity_analysis( )
-#' # function of the MLwrap pipeline using the SHAP method.
+#' # Note: For obtaining the SHAP plots the user needs to complete till
+#' # sensitivity_analysis( ) function of the MLwrap pipeline using the SHAP method.
 #'
-#' \dontrun{
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#' wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
-#'
-#' # And then, you can obtain the SHAP plots.
-#'
-#' plot_shap(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis()
+#' # (Requires sensitivity_analysis(methods = "SHAP"))
+#' # Final call signature:
+#' # plot_shap(wrap_object)
 #'
 #' @export
 plot_shap <- function(analysis_object, show_table = FALSE){
@@ -794,10 +722,12 @@ plot_shap <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **plot_integrated_gradients()** function replicates the SHAP visualization structure for integrated gradient
-#' values, providing the same four graphical modalities adapted to this specific interpretability methodology for
-#' neural networks. This function is particularly valuable for understanding feature importance in deep learning
-#' architectures where gradients provide direct information about model sensitivity.
+#' The **plot_integrated_gradients()** function replicates the SHAP
+#' visualization structure for integrated gradient values, providing the same
+#' four graphical modalities adapted to this specific interpretability
+#' methodology for neural networks. This function is particularly valuable for
+#' understanding feature importance in deep learning architectures where
+#' gradients provide direct information about model sensitivity.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Integrated Gradients")'.
 #'
@@ -809,24 +739,13 @@ plot_shap <- function(analysis_object, show_table = FALSE){
 #' # complete till sensitivity_analysis( ) function of the MLwrap pipeline
 #' # using the Integrated Gradients method.
 #'
-#' if (requireNamespace("torch", quietly = TRUE)) {
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#'   \dontrun{
-#'
-#'   wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'   wrap_object <- sensitivity_analysis(wrap_object, methods = "Integrated Gradients")
-#'
-#'   # And then, you can obtain the Integrated Gradients plot.
-#'
-#'   plot_integrated_gradients(wrap_object)
-#'
-#'   }
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis()
+#' # (Requires sensitivity_analysis(methods = "Integrated Gradients"))
+#' # Final call signature:
+#' # plot_integrated_gradients(wrap_object)
 #'
 #' @export
 plot_integrated_gradients <- function(analysis_object, show_table = FALSE){
@@ -885,9 +804,11 @@ plot_integrated_gradients <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **plot_olden()** function generates specialized bar plots for visualizing Olden method results, which provide
-#' importance measures specific to neural networks based on connection weight analysis. This method offers insights
-#' into how input variables influence predictions through the network's synaptic connections.
+#' The **plot_olden()** function generates specialized bar plots for visualizing
+#' Olden method results, which provide importance measures specific to neural
+#' networks based on connection weight analysis. This method offers insights
+#' into how input variables influence predictions through the network's synaptic
+#' connections.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Olden")'.
 #'
@@ -895,27 +816,17 @@ plot_integrated_gradients <- function(analysis_object, show_table = FALSE){
 #'
 #' @returns analysis_object
 #' @examples
-#' # Note: For obtaining the Olden plot the user needs to complete till sensitivity_analysis( )
-#' # function of the MLwrap pipeline using the Olden method.
+#' # Note: For obtaining the Olden plot the user needs to complete till
+#' # sensitivity_analysis( ) function of the MLwrap pipeline using the Olden
+#' # method.
 #'
-#' if (requireNamespace("torch", quietly = TRUE)) {
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#'   \dontrun{
-#'
-#'   wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#'   wrap_object <- build_model(wrap_object, "Neural Network")
-#'   wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#'   wrap_object <- sensitivity_analysis(wrap_object, methods = "Olden")
-#'
-#'   # And then, you can obtain the Olden plot.
-#'
-#'   plot_olden(wrap_object)
-#'
-#'   }
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis()
+#' # (Requires sensitivity_analysis(methods = "Olden"))
+#' # Final call signature:
+#' # plot_olden(wrap_object)
 #'
 #' @export
 plot_olden <- function(analysis_object, show_table = FALSE){
@@ -954,9 +865,11 @@ plot_olden <- function(analysis_object, show_table = FALSE){
 #'
 #' @description
 #'
-#' The **plot_sobol_jansen()** function produces bar plots for Sobol-Jansen analysis results, offering a
-#' global sensitivity perspective based on variance decomposition. This methodology is particularly valuable
-#' for identifying higher-order effects and complex interactions between variables in model predictions.
+#' The **plot_sobol_jansen()** function produces bar plots for Sobol-Jansen
+#' analysis results, offering a global sensitivity perspective based on variance
+#' decomposition. This methodology is particularly valuable for identifying
+#' higher-order effects and complex interactions between variables in model
+#' predictions.
 #'
 #' @param analysis_object Fitted analysis_object with 'sensitivity_analysis(methods = "Sobol_Jansen")'.
 #'
@@ -964,23 +877,17 @@ plot_olden <- function(analysis_object, show_table = FALSE){
 #'
 #' @returns analysis_object
 #' @examples
-#' # Note: For obtaining the Sobol_Jansen plot the user needs to complete till sensitivity_analysis( )
-#' # function of the MLwrap pipeline using the Sobol_Jansen method.
+#' # Note: For obtaining the Sobol_Jansen plot the user needs to complete till
+#' # sensitivity_analysis( ) function of the MLwrap pipeline using
+#' # the Sobol_Jansen method.
 #'
-#' \dontrun{
+#' @seealso \code{\link{sensitivity_analysis}}
 #'
-#' wrap_object <- preprocessing(df = sim_data,
-#'                              formula = psych_well ~ depression + emot_intel + resilience,
-#'                              task = "regression")
-#' wrap_object <- build_model(wrap_object, "Random Forest")
-#' wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-#' wrap_object <- sensitivity_analysis(wrap_object, methods = "Sobol_Jansen")
-#'
-#' # And then, you can obtain the Sobol_Jansen plot.
-#'
-#' plot_sobol_jansen(wrap_object)
-#'
-#' }
+#' @examples
+#' # See the full pipeline example under sensitivity_analysis()
+#' # (Requires sensitivity_analysis(methods = "Sobol_Jansen"))
+#' # Final call signature:
+#' # plot_sobol_jansen(wrap_object)
 #'
 #' @export
 plot_sobol_jansen <- function(analysis_object, show_table = FALSE){

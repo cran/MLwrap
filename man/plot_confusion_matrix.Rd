@@ -13,28 +13,22 @@ plot_confusion_matrix(analysis_object)
 analysis_object
 }
 \description{
-The \strong{plot_confusion_matrix()} function generates confusion matrices for both training and test data
-in classification problems. This visualization allows evaluation of classification accuracy by category
-and identification of confusion patterns between classes, providing insights into which classes are most
-frequently misclassified.
+The \strong{plot_confusion_matrix()} function generates confusion matrices for both
+training and test data in classification problems. This visualization allows
+evaluation of classification accuracy by category and identification of
+confusion patterns between classes, providing insights into which classes are
+most frequently misclassified.
 }
 \examples{
 # Note: For obtaining confusion matrix plot the user needs to
 # complete till fine_tuning( ) function of the MLwrap pipeline and
 # only with categorical outcome.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well_bin ~ depression + emot_intel + resilience,
-                             task = "classification")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-
-# And then, you can obtain the confusion matrix plot.
-
-plot_confusion_matrix(wrap_object)
+# See the full pipeline example under plot_calibration_curve()
+# Final call signature:
+# plot_confusion_matrix(wrap_object)
 
 }
-
+\seealso{
+\code{\link{plot_calibration_curve}}
 }

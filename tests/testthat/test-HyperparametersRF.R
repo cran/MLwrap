@@ -31,7 +31,7 @@ test_that("Check Random Forest Defualt Hyperparams works", {
   expect_equal(hyperparam_rf$tuning, T)
   expect_equal(hyperparam_rf$hyperparams_ranges$mtry$range, list(lower = 3, upper = 8))
   expect_equal(hyperparam_rf$hyperparams_ranges$trees$range, list(lower = 100, upper = 300))
-  expect_equal(hyperparam_rf$hyperparams_ranges$min_n$range, list(lower = 2, upper = 25))
+  expect_equal(hyperparam_rf$hyperparams_ranges$min_n$range, list(lower = 5, upper = 25))
 
   expect_equal(hyperparam_rf$mtry_tune, T)
   expect_equal(hyperparam_rf$trees_tune, T)

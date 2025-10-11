@@ -13,27 +13,21 @@ plot_residuals_distribution(analysis_object)
 analysis_object
 }
 \description{
-The \strong{plot_residuals_distribution()} function generates histograms of residual distributions for both
-training and test data in regression problems. This visualization enables evaluation of error normality
-and detection of systematic patterns in model residuals. The function uses patchwork to combine training
+The \strong{plot_residuals_distribution()} function generates histograms of residual
+distributions for both training and test data in regression problems. This
+visualization enables evaluation of error normality and detection of systematic
+patterns in model residuals. The function uses patchwork to combine training
 and test plots in a single display for direct comparison.
 }
 \examples{
 # Note: For obtaining the residuals distribution plot the user needs to
 # complete till fine_tuning( ) function of the MLwrap pipeline.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-
-# And then, you can obtain the residuals distribution plot.
-
-plot_residuals_distribution(wrap_object)
+# See the full pipeline example under table_best_hyperparameters()
+# Final call signature:
+# plot_residuals_distribution(wrap_object)
 
 }
-
+\seealso{
+\code{\link{table_best_hyperparameters}}
 }

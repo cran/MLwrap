@@ -14,7 +14,7 @@ HyperparamsRF <- R6::R6Class("Random Forest Hyperparameters",
 
                                     mtry = dials::mtry(range = c(3, 8)),
                                     trees = dials::trees(range = c(100, 300)),
-                                    min_n = dials::min_n(range = c(2, 25))
+                                    min_n = dials::min_n(range = c(5, 25))
 
                                   )
 
@@ -28,6 +28,23 @@ HyperparamsRF <- R6::R6Class("Random Forest Hyperparameters",
 
                                     if (all(names(hyperparams) %in% valid_hparams)){
 
+                                      for (hyp_name in names(hyperparams)){
+
+                                        hyperparam <- hyperparams[[hyp_name]]
+
+                                        if (length(hyperparam) > 1){
+
+                                          if (hyperparam[1] >= hyperparam[2]){
+
+                                            print(names(hyperparams))
+
+                                            stop(paste0("For '", hyp_name, "' lower range (", hyperparam[1],
+                                                        ") is greater or equal to upper range (", hyperparam[2],")!"))
+
+                                          }
+
+                                        }
+                                      }
                                     }
 
                                     else {

@@ -15,33 +15,24 @@ table_olden_results(analysis_object, show_table = FALSE)
 Tibble or list of tibbles (multiclass classification) with Olden results.
 }
 \description{
-The \strong{table_olden_results()} function extracts results from the Olden method, a technique specific to
-neural networks that calculates relative importance of input variables through analysis of connection
-weights between network layers. This method provides a measure of each variable's contribution based
-on the magnitude and direction of synaptic connections.
+The \strong{table_olden_results()} function extracts results from the Olden method,
+a technique specific to neural networks that calculates relative importance of
+input variables through analysis of connection weights between network layers.
+This method provides a measure of each variable's contribution based on the
+magnitude and direction of synaptic connections.
 }
 \examples{
-# Note: For obtaining the table with Olden method results the user needs to complete till
-# sensitivity_analysis() function of the MLwrap pipeline using the Olden method.
-# Remember Olden method only can be used with neural network model.
+# Note: For obtaining the table with Olden method results the user needs to
+# complete till sensitivity_analysis() function of the MLwrap pipeline using
+# the Olden method. Remember Olden method only can be used with neural
+# network model.
 
-if (requireNamespace("torch", quietly = TRUE)) {
-
-  \dontrun{
-
-  wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-  wrap_object <- build_model(wrap_object, "Neural Network")
-  wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-  wrap_object <- sensitivity_analysis(wrap_object, methods = "Olden")
-
-  # And then, you can obtain the Olden results table.
-
-  table_Olden <- table_olden_results(wrap_object)
-
-  }
+# See the full pipeline example under sensitivity_analysis
+# (Requires sensitivity_analysis(methods = "Olden"))
+# Final call signature:
+# table_olden_results(wrap_object)
 
 }
-
+\seealso{
+\code{\link{sensitivity_analysis}}
 }

@@ -13,27 +13,21 @@ plot_scatter_predictions(analysis_object)
 analysis_object
 }
 \description{
-The \strong{plot_scatter_predictions()} function generates scatter plots between observed and predicted values,
-providing direct visual assessment of model predictive accuracy. The function displays both training and
-test results side by side, enabling evaluation of model generalization performance and identification of
-potential overfitting.
+The \strong{plot_scatter_predictions()} function generates scatter plots between
+observed and predicted values, providing direct visual assessment of model
+predictive accuracy. The function displays both training and test results side
+by side, enabling evaluation of model generalization performance and
+identification of potential overfitting.
 }
 \examples{
 # Note: For obtaining the observed vs. predicted values plot the user needs to
 # complete till fine_tuning( ) function of the MLwrap pipeline.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-
-# And then, you can obtain the observed vs predicted values plot.
-
-plot_scatter_predictions(wrap_object)
+# See the full pipeline example under table_best_hyperparameters()
+# Final call signature:
+# plot_scatter_predictions(wrap_object)
 
 }
-
+\seealso{
+\code{\link{table_best_hyperparameters}}
 }

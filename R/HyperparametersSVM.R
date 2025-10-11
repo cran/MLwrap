@@ -68,6 +68,25 @@ HyperparamsSVM <- R6::R6Class("Neural Network Hyperparameters",
                                       stop(paste0("Incorrect kernel type. Valid options are: 'linear', 'rbf', 'poly'."))
 
                                     }
+
+                                   for (hyp_name in names(hyperparams)){
+
+                                     hyperparam <- hyperparams[[hyp_name]]
+
+                                     if (length(hyperparam) > 1){
+
+                                       if (hyperparam[1] >= hyperparam[2]){
+
+                                         print(names(hyperparams))
+
+                                         stop(paste0("For '", hyp_name, "' lower range (", hyperparam[1],
+                                                     ") is greater or equal to upper range (", hyperparam[2],")!"))
+
+                                       }
+
+                                     }
+                                   }
+
                                   }
                                },
 

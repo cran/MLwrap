@@ -113,7 +113,7 @@ test_that("Check build_model RF works properly",{
   expect_equal(model_object$hyperparameters$min_n_tune, T)
   expect_equal(model_object$hyperparameters$hyperparams_constant$trees, 100)
   expect_equal(model_object$hyperparameters$hyperparams_ranges$mtry$range, list("lower" = 3, "upper" = 5))
-  expect_equal(model_object$hyperparameters$hyperparams_ranges$min_n$range, list(lower = 2, upper = 25))
+  expect_equal(model_object$hyperparameters$hyperparams_ranges$min_n$range, list(lower = 5, upper = 25))
 
 })
 

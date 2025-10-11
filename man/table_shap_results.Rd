@@ -15,11 +15,13 @@ table_shap_results(analysis_object, show_table = FALSE)
 Tibble or list of tibbles (multiclass classification) with SHAP summarized results.
 }
 \description{
-The \strong{table_shap_results()} function processes previously calculated SHAP (SHapley Additive exPlanations)
-values and generates summarized metrics including mean absolute value, standard deviation of mean absolute
-value, and a directional sensitivity value calculated as the covariance between feature values and SHAP
-values divided by the variance of feature values. This directional metric provides information about the
-nature of the relationship between each variable and model predictions. To summarize the SHAP values
+The \strong{table_shap_results()} function processes previously calculated SHAP
+(SHapley Additive exPlanations) values and generates summarized metrics
+including mean absolute value, standard deviation of mean absolute value, and
+a directional sensitivity value calculated as the covariance between feature
+values and SHAP values divided by the variance of feature values. This
+directional metric provides information about the nature of the relationship
+between each variable and model predictions. To summarize the SHAP values
 calculated, three different metrics are computed:
 \itemize{
 \item \strong{Mean Absolute Value}
@@ -32,19 +34,12 @@ calculated, three different metrics are computed:
 # to complete till sensitivity_analysis() function of the
 # MLwrap pipeline using the SHAP method.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Bayesian Optimization")
-wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
-
-# And then, you can obtain the SHAP results table.
-
-table_shap <- table_shap_results(wrap_object)
+# See the full pipeline example under sensitivity_analysis
+# (Requires sensitivity_analysis(methods = "SHAP"))
+# Final call signature:
+# table_shap_results(wrap_object)
 
 }
-
+\seealso{
+\code{\link{sensitivity_analysis}}
 }

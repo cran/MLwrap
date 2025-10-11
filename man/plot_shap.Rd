@@ -15,29 +15,23 @@ plot_shap(analysis_object, show_table = FALSE)
 analysis_object
 }
 \description{
-The \strong{plot_shap()} function implements a comprehensive set of visualizations for SHAP values, including bar
-plots of mean absolute values, directional plots showing positive or negative contribution nature, box plots
-illustrating SHAP value distributions by variable, and swarm plots combining individual and distributional
-information. This multifaceted approach enables deep understanding of how each feature influences model
-predictions.
+The \strong{plot_shap()} function implements a comprehensive set of visualizations
+for SHAP values, including bar plots of mean absolute values, directional
+plots showing positive or negative contribution nature, box plots
+illustrating SHAP value distributions by variable, and swarm plots combining
+individual and distributional information. This multifaceted approach enables
+deep understanding of how each feature influences model predictions.
 }
 \examples{
-# Note: For obtaining the SHAP plots the user needs to complete till sensitivity_analysis( )
-# function of the MLwrap pipeline using the SHAP method.
+# Note: For obtaining the SHAP plots the user needs to complete till
+# sensitivity_analysis( ) function of the MLwrap pipeline using the SHAP method.
 
-\dontrun{
-
-wrap_object <- preprocessing(df = sim_data,
-                             formula = psych_well ~ depression + emot_intel + resilience,
-                             task = "regression")
-wrap_object <- build_model(wrap_object, "Random Forest")
-wrap_object <- fine_tuning(wrap_object, "Grid Search CV")
-wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
-
-# And then, you can obtain the SHAP plots.
-
-plot_shap(wrap_object)
+# See the full pipeline example under sensitivity_analysis()
+# (Requires sensitivity_analysis(methods = "SHAP"))
+# Final call signature:
+# plot_shap(wrap_object)
 
 }
-
+\seealso{
+\code{\link{sensitivity_analysis}}
 }
