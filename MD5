@@ -1,4 +1,4 @@
-ae0dbbe28a02bac3ded1a43d6b3fcd59 *DESCRIPTION
+1f7ed3d8a74ccccfa3a1247dd542adf7 *DESCRIPTION
 4c3b245e33418294ca70adcef81d0da9 *NAMESPACE
 399a3b327fd55a030e0530ba45f7fcab *R/Bayesian_Optimization.R
 9b3e2d57215b3a7f743062fac2d6b446 *R/GridSearchCV.R
@@ -15,7 +15,7 @@ a8bda380e7407ea1a7a96e672d32c6a0 *R/check_arguments.R
 da5877e5ffd3d9dfa1431b12021cfc94 *R/create_nn.R
 69eb3806c68b5808b2ae786efce080e7 *R/create_rf.R
 62b19d98564200a05a1f7e08aa6d6f14 *R/create_svm.R
-ce431bec7eb81e3882b496d7aab9bf9e *R/create_xgboost.R
+1249ec36fb30815c930bb2347d1fcd17 *R/create_xgboost.R
 1c60cd12cea48b933cfe94cf049b0d10 *R/evaluate_model.R
 7335a514f7e25b224ecd80f4418c5ef4 *R/fine_tuning.R
 66e9984e7156ea437e75de256bdee555 *R/graph_nn.R
