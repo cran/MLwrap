@@ -12,12 +12,13 @@ table_pfi_results(analysis_object, show_table = FALSE)
 \item{show_table}{Boolean. Whether to print the table.}
 }
 \value{
-Tibble or list of tibbles (multiclass classification) with PFI results.
+Tibble or list of tibbles (multiclass classification) with PFI
+results.
 }
 \description{
 The \strong{table_pfi_results()} function extracts Permutation Feature Importance
-results, a model-agnostic technique that evaluates variable importance through
-performance degradation when randomly permuting each feature's values.
+results, a model-agnostic technique that evaluates variable importance
+through performance degradation when randomly permuting each feature's values.
 }
 \examples{
 # Note: For obtaining the table with PFI method results the user needs to
@@ -36,5 +37,4 @@ wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
 # And then, you can obtain the PFI results table.
 
 table_pfi <- table_pfi_results(wrap_object)
-
 }
