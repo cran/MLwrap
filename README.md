@@ -56,7 +56,7 @@ library(MLwrap)
 #> 
 #> *****************************************************************************
 #> 
-#>       MLwrap v0.2.2: **Start simple, scale smart**
+#>       MLwrap v0.2.3: **Start simple, scale smart**
 #> 
 ## basic example code
 

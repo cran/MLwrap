@@ -1,4 +1,4 @@
-6115866965730005c36823aaab204f1b *DESCRIPTION
+ee53470257955a0f1750d048af72c01c *DESCRIPTION
 9929eaf87850b370c8ef0f7729c4d206 *NAMESPACE
 ac7a56286c96f5096c5399d36f767b39 *R/Bayesian_Optimization.R
 f42768f51c2b28768639a4ddc3c66f97 *R/GridSearchCV.R
@@ -7,7 +7,7 @@ f139bfc5aa1b89b0fa06cf64e46cfd8d *R/HyperparametersRF.R
 5c0ac2772e5b6cf8da736b5363752ebd *R/HyperparametersSVM.R
 92e7856b41e1b4a98a2b2682c069c3a4 *R/HyperparametersXGBoost.R
 a6780a45e6f8ce7e880f810b2a825019 *R/Integrated_Gradients.R
-2427d05d666f1d24eff6ae504b4ba440 *R/InterpretableML.R
+d9b5e6c68bbf8706e38ae71e74bef792 *R/InterpretableML.R
 70f449f48a08c463ad8e7c6719e4d717 *R/Objects.R
 7f5d4842a095601245c791c5bd7903fd *R/SOBOL.R
 79d44708a584d445a6de4c9bcf485aaa *R/Tuners.R
@@ -22,7 +22,7 @@ da5877e5ffd3d9dfa1431b12021cfc94 *R/create_nn.R
 1129e745c83ed02aeb17e42264455387 *R/metrics.R
 c66be2846bbece6e55cde09e477d5d22 *R/model_creation.R
 3159742bfeeb29df776a0650b7a98505 *R/olden_method.R
-3f1c0e742b32ff1b4c85c241b814cc93 *R/permutation_feature_importance.R
+02f5668e6309cf849c650022f559ab7a *R/permutation_feature_importance.R
 d42292e3027bc1a84c6fda4befa65769 *R/plotting_utils.R
 1d233b0ae6271a647165e7fc971471ab *R/preprocessing.R
 7a4faa225471cea5d61fdb4ebb754e0a *R/results_binary_classification.R
@@ -31,12 +31,12 @@ c5af67280d075d5f78ff2bfb2340ee78 *R/results_regression.R
 84838dc23b3aaf8e04f0ba30a32e2bcf *R/shap_values.R
 e6a341e15eecc81f3fe7d6d34c6bdd53 *R/sim_data.R
 4f0e195aaf78962f9134de529c830fc7 *R/summary.AnalysisObject.R
-d86bed8886703f61de0bb21e569aba2e *R/table_utils.R
+f08d0c7e9d8aa8ea9807f2cd1639418f *R/table_utils.R
 87df2401999ca8f483a43d0396e9c70a *R/tutorial.R
 5305b318dc8296d089eedb487faba1bf *R/utils-pipe.R
 bc97cdceddcfece545f3b2c531c8ca77 *R/zzz.R
-16db5c94b8aeed2b138a8e6c00dcfb3a *README.md
-cb3b20077bebc5da31fc1b46c657c0ff *build/partial.rdb
+e9492f0d002bf5af79da7b771c929005 *README.md
+d54042561b90aafd8a9a202ea63e1e4b *build/partial.rdb
 b35f09211dea7bc946f73ed1479cf25e *data/sim_data.rda
 6d75d10a32829a93b3d54eb1c7a760a1 *man/build_model.Rd
 c6aaf4afd354107d000d2b7f9732bace *man/figures/README-example-1.png
@@ -65,14 +65,14 @@ e90869eb466a1c8c004650adb099e4ac *man/plot_scatter_predictions.Rd
 6e0f2d65f6f686f208945f87394515ef *man/plot_sobol_jansen.Rd
 d79dffc293920c6030453635b6fdd5ec *man/plot_tuning_results.Rd
 9cc95870fd41226747d4ae08867b9741 *man/preprocessing.Rd
-1cc8546da59a451189b3a2f53b8adeeb *man/sensitivity_analysis.Rd
+7efce60b01163b5bc3766dafd09d75b3 *man/sensitivity_analysis.Rd
 29d03845f97a2c5e08628f5f1070dd96 *man/sim_data.Rd
 93c57d33002ad344218dad4edc29e0de *man/table_best_hyperparameters.Rd
 fd463a7376e3d98c838758f77e09c1f3 *man/table_evaluation_results.Rd
 301c6f7969e0df4df5f446739caee47d *man/table_integrated_gradients_results.Rd
 57c2d5752c576ebb938bfc1cba6c998f *man/table_olden_results.Rd
-a62f2d3b8f16cb653aeb10301176a91f *man/table_pfi_results.Rd
-e7dc7909352675ff57dd0456932fbb11 *man/table_shap_results.Rd
+c8fd9498609cfccd537000156ac13bd9 *man/table_pfi_results.Rd
+5f6ac24d003642cef70421fd40103321 *man/table_shap_results.Rd
 c190fa7e72916b8d63c45639eef5760e *man/table_sobol_jansen_results.Rd
 953c299ef7c442afbe2f2a47a7861490 *man/tutorial.Rd
 48b616bb4d7dec42db7110132ca0de5d *tests/testthat.R

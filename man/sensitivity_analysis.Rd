@@ -79,7 +79,7 @@ are stored in the \code{analysis_object} under the \code{sensitivity_analysis} s
 finalizing the MLwrap pipeline with a deep understanding of model drivers.
 }
 \examples{
-# Example: Using PFI
+# Example: Using SHAP
 
 wrap_object <- preprocessing(
        df = sim_data,
@@ -99,11 +99,11 @@ wrap_object <- fine_tuning(wrap_object,
                 tuner = "Grid Search CV",
                 metrics = c("rmse")
                 )
-wrap_object <- sensitivity_analysis(wrap_object, methods = "PFI")
+wrap_object <- sensitivity_analysis(wrap_object, methods = "SHAP")
 
 # Extracting Results
 
-table_pfi <- table_pfi_results(wrap_object)
+table_shap <- table_shap_results(wrap_object)
 
 }
 \references{
