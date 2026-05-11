@@ -4,7 +4,7 @@
 \alias{fine_tuning}
 \title{Fine Tune ML Model}
 \usage{
-fine_tuning(analysis_object, tuner, metrics = NULL)
+fine_tuning(analysis_object, tuner, metrics = NULL, verbose = FALSE)
 }
 \arguments{
 \item{analysis_object}{analysis_object created from build_model function.}
@@ -15,6 +15,9 @@ fine_tuning(analysis_object, tuner, metrics = NULL)
 \item{metrics}{Metric used for Model Selection. A string of the name of
 metric (see Metrics). By default either "rmse" (regression)
 or "roc_auc" (classification).}
+
+\item{verbose}{Logical. If \code{TRUE}, progress details are printed to the
+console during the tuning procedure. Defaults to \code{FALSE}.}
 }
 \value{
 An updated analysis_object containing the fitted model with

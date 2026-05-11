@@ -23,6 +23,8 @@
 #' @param metrics Metric used for Model Selection. A string of the name of
 #'             metric (see Metrics). By default either "rmse" (regression)
 #'             or "roc_auc" (classification).
+#' @param verbose Logical. If `TRUE`, progress details are printed to the
+#' console during the tuning procedure. Defaults to `FALSE`.
 #' @section Tuners:
 #'
 #' ## Bayesian Optimization (with cross-validation)
@@ -103,7 +105,7 @@
 #' Practical Guide*. Springer.
 #' \doi{10.1007/978-981-19-5170-1}
 #' @export
-fine_tuning <- function(analysis_object, tuner, metrics = NULL){
+fine_tuning <- function(analysis_object, tuner, metrics = NULL, verbose = FALSE){
 
   check_args_fine_tuning(analysis_object = analysis_object, tuner = tuner, metrics = metrics)
 
@@ -143,7 +145,8 @@ fine_tuning <- function(analysis_object, tuner, metrics = NULL){
     tuner_fit = tune_models(analysis_object,
                             tuner,
                             sampling_method,
-                            metrics = set_metrics)
+                            metrics = set_metrics,
+                            verbose = verbose)
 
     if (base::interactive()){cli::cli_alert_success("Tuning Finalized!")}
 
@@ -210,15 +213,15 @@ fine_tuning <- function(analysis_object, tuner, metrics = NULL){
 
 }
 
-tune_models <- function(analysis_object, tuner, sampling_method, metrics){
+tune_models <- function(analysis_object, tuner, sampling_method, metrics, verbose = FALSE){
 
   if (tuner == "Bayesian Optimization"){
 
-    tuner_object <- tune_models_bayesian(analysis_object, sampling_method, metrics = metrics)
+    tuner_object <- tune_models_bayesian(analysis_object, sampling_method, metrics = metrics, verbose = verbose)
 
   } else if (tuner == "Grid Search CV"){
 
-    tuner_object <- tune_models_grid_search_cv(analysis_object, sampling_method, metrics = metrics)
+    tuner_object <- tune_models_grid_search_cv(analysis_object, sampling_method, metrics = metrics, verbose = verbose)
 
   }
 

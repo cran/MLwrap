@@ -13,8 +13,10 @@ with the fundamental steps of the KDD methodology, from data selection
 and preparation, through model building and tuning, to the
 interpretation and evaluation of results using Sensitivity Analysis. The
 ‘MLwrap’ workflow is organized into four core steps; preprocessing(),
-build_model(), fine_tuning(), and sensitivity_analysis(). These steps
-correspond, respectively, to data preparation and transformation, model
+build_model(), fine_tuning(), and sensitivity_analysis(). It also includes
+global and pairwise interaction analysis based on Friedman’s H-statistic to
+support a more detailed interpretation of complex feature relationships. These
+steps correspond, respectively, to data preparation and transformation, model
 construction, hyperparameter optimization, and sensitivity analysis. The
 user can access comprehensive model evaluation results including fit
 assessment metrics, plots, predictions, and performance diagnostics for
